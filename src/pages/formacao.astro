@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EducationCard from '../components/EducationCard.astro';
+
+const education = [
+  {
+    period: '2025 – presente',
+    degree: 'Biomedicina (Bacharelado)',
+    institution: 'Universidade Positivo, Campus Ecoville — Curitiba/PR',
+    status: 'em_curso' as const,
+  },
+  {
+    period: '2023 – 2024',
+    degree: 'Análise e Desenvolvimento de Sistemas (Tecnólogo)',
+    institution: 'Faculdade UniBF',
+    status: 'concluido' as const,
+  },
+  {
+    period: '2020 – 2021',
+    degree: 'MBA Gestão de Projetos',
+    institution: 'Estácio',
+    status: 'trancado' as const,
+  },
+];
+
+const certifications = [
+  {
+    period: '2021',
+    degree: 'Scrum Foundation Professional (SFPC)',
+    institution: 'CertiProf',
+    status: 'concluido' as const,
+  },
+];
+---
+
+<BaseLayout
+  title="Formação"
+  description="Formação acadêmica e certificações de Khalid Ait Bellahs — Biomedicina (Universidade Positivo), ADS (UniBF), e certificações profissionais."
+>
+  <section class="container section">
+    <h1>Formação</h1>
+
+    <h2 class="subsection-title">Educação</h2>
+    <div class="education-grid">
+      {education.map((item) => (
+        <EducationCard
+          period={item.period}
+          degree={item.degree}
+          institution={item.institution}
+          status={item.status}
+        />
+      ))}
+    </div>
+
+    <h2 class="subsection-title">Certificações</h2>
+    <div class="education-grid">
+      {certifications.map((item) => (
+        <EducationCard
+          period={item.period}
+          degree={item.degree}
+          institution={item.institution}
+          status={item.status}
+        />
+      ))}
+    </div>
+
+    <h2 class="subsection-title">Idiomas</h2>
+    <div class="languages">
+      <div class="language">
+        <span class="language__name">Árabe</span>
+        <span class="language__level language__level--native">Nativo</span>
+      </div>
+      <div class="language">
+        <span class="language__name">Darija <small>(dialeto marroquino)</small></span>
+        <span class="language__level language__level--native">Nativo</span>
+      </div>
+      <div class="language">
+        <span class="language__name">Amazigh</span>
+        <span class="language__level language__level--native">Nativo</span>
+      </div>
+      <div class="language">
+        <span class="language__name">Português</span>
+        <span class="language__level language__level--fluent">Fluente</span>
+      </div>
+      <div class="language">
+        <span class="language__name">Inglês</span>
+        <span class="language__level language__level--advanced">Avançado</span>
+      </div>
+      <div class="language">
+        <span class="language__name">Francês</span>
+        <span class="language__level language__level--basic">Básico</span>
+      </div>
+      <div class="language">
+        <span class="language__name">Espanhol</span>
+        <span class="language__level language__level--basic">Básico</span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .subsection-title {
+    font-size: var(--font-size-xl);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .subsection-title:first-of-type {
+    margin-top: var(--space-4);
+  }
+
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .languages {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-3);
+  }
+
+  .language {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-surface);
+  }
+
+  .language__name {
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+  }
+
+  .language__name small {
+    color: var(--color-text-muted);
+    font-weight: 400;
+  }
+
+  .language__level {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    padding: 2px var(--space-2);
+    border-radius: 9999px;
+  }
+
+  .language__level--native {
+    background: var(--color-accent-bg);
+    color: var(--color-accent);
+  }
+
+  .language__level--fluent {
+    background: #f0fdf4;
+    color: #15803d;
+  }
+
+  :root.dark .language__level--fluent {
+    background: rgba(21, 128, 61, 0.15);
+    color: #4ade80;
+  }
+
+  .language__level--advanced {
+    background: #eff6ff;
+    color: #2563eb;
+  }
+
+  :root.dark .language__level--advanced {
+    background: rgba(37, 99, 235, 0.15);
+    color: #60a5fa;
+  }
+
+  .language__level--basic {
+    background: var(--color-bg-alt);
+    color: var(--color-text-muted);
+  }
+</style>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResearchCard from '../components/ResearchCard.astro';
+
+const researchLines = [
+  {
+    icon: '🧬',
+    title: 'Biogerontologia Computacional',
+    description: 'Aplicação de redes neurais e IA à descoberta de senolíticos e predição de idade biológica via relógios epigenéticos.',
+  },
+  {
+    icon: '🔬',
+    title: 'Mecanismos do Envelhecimento',
+    description: 'Hallmarks, senescência celular, SASP, metabolismo de NAD+, atrito telomérico e intervenções geroprotectoras.',
+  },
+  {
+    icon: '🧪',
+    title: 'Reprogramação Epigenética',
+    description: 'Fatores OSK/OSKM, relógios de metilação, rejuvenescimento celular parcial e ensaios pré-clínicos de reprogramação.',
+  },
+  {
+    icon: '🤖',
+    title: 'IA Translacional',
+    description: 'LLMs para genômica, GNNs para drug discovery, AlphaFold para alvos geroprotectores e multi-ômica preditiva.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pesquisa"
+  description="Linhas de pesquisa de Khalid Ait Bellahs — biogerontologia computacional, mecanismos do envelhecimento, reprogramação epigenética e IA translacional."
+>
+  <section class="container section">
+    <h1>Linhas de Pesquisa</h1>
+    <p class="page-intro">
+      Minha pesquisa integra biologia molecular do envelhecimento com inteligência artificial,
+      buscando acelerar a tradução de descobertas laboratoriais em intervenções clínicas para
+      extensão do healthspan humano.
+    </p>
+
+    <div class="research-grid">
+      {researchLines.map((line) => (
+        <ResearchCard icon={line.icon} title={line.title} description={line.description} />
+      ))}
+    </div>
+
+    <div class="section-cta">
+      <a href="/publications" class="btn btn--outline">Ver publicações →</a>
+      <a href="/blog" class="btn btn--outline">Ler artigos →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-intro {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--space-10);
+  }
+
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-10);
+  }
+
+  .section-cta {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+  }
+
+  .btn--outline {
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    background: transparent;
+  }
+
+  .btn--outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .research-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

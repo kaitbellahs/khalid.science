@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Timeline from '../components/Timeline.astro';
+
+const careerEntries = [
+  {
+    period: '2017 – presente',
+    role: 'CEO/CTO & Fundador',
+    company: 'Trusom Innovation (<a href="https://trusom.com" target="_blank" rel="noopener noreferrer">trusom.com</a>)',
+    description: 'Plataformas digitais, IA e deep learning. Produtos: TruArm (CRM/agendamento para clínicas de saúde e estética, com módulos Social Gateway e TruArm Connect — <a href="https://truarm.com" target="_blank" rel="noopener noreferrer">truarm.com</a>), TruHail (fase final de testes), TruAgro (fase final de testes).',
+  },
+  {
+    period: '2024',
+    role: 'CEO',
+    company: 'Smart Business Factory',
+    description: 'Intermediação de negócios e eventos corporativos.',
+  },
+  {
+    period: '2023',
+    role: 'CEO',
+    company: 'Pub do Espeto',
+    description: 'Gestão empresarial, marketing estratégico e análise de mercado.',
+  },
+  {
+    period: '2019 – 2022',
+    role: 'Software Engineer',
+    company: 'G&P / Prodesp',
+    description: 'Poupatempo Digital (iOS) para o Governo do Estado de SP. Arquitetura híbrida VIP/VIPER. Liderança de equipe iOS.',
+  },
+  {
+    period: '2020 – 2021',
+    role: 'Arquiteto SR',
+    company: 'BRQ / Bradesco',
+    description: 'Banco Next: implementação do sistema PIX. Liderança de 11+ desenvolvedores. Entrevistas técnicas e definição de arquitetura.',
+  },
+  {
+    period: '2019',
+    role: 'SKN1 Analyst',
+    company: 'everis / UHG',
+    description: 'Amil Mobile (Xamarin, 30+ membros) e Santander Pi Investimentos.',
+  },
+  {
+    period: '2018 – 2019',
+    role: 'Dev Analyst',
+    company: 'Macro Connect',
+    description: 'Clube de Benefícios — back-end, front-end e apps iOS/Android.',
+  },
+  {
+    period: '2017 – 2018',
+    role: 'IT Leader',
+    company: 'Convert Mkt',
+    description: 'Plataformas de saúde (médicos e clínicas). React, Angular, Node.js.',
+  },
+  {
+    period: '2011 – 2014',
+    role: 'Arquiteto de Soluções',
+    company: 'General Technology (Marrocos)',
+    description: 'Sistemas financeiros, ERP e e-commerce para o mercado norte-africano.',
+  },
+  {
+    period: '2005 – 2016',
+    role: 'Técnico & Desenvolvedor Autônomo',
+    company: 'Freelance (Marrocos)',
+    description: 'Reparo e engenharia reversa de dispositivos móveis. Desenvolveu software comercial para desbloqueio de celulares e dispositivos móveis (2010–2012). Manutenção de hardware: celulares, computadores, tablets, GPS e notebooks.',
+  },
+];
+---
+
+<BaseLayout
+  title="Carreira"
+  description="Trajetória profissional de Khalid Ait Bellahs — de arquiteto de soluções a CEO de startups de tecnologia, passando por grandes projetos iOS para governo e bancos."
+>
+  <section class="container section">
+    <h1>Carreira</h1>
+    <p class="page-intro">
+      Mais de 15 anos construindo software, liderando equipes e fundando empresas de tecnologia —
+      de sistemas financeiros no Marrocos a plataformas digitais para o governo de São Paulo.
+    </p>
+
+    <Timeline entries={careerEntries} />
+  </section>
+</BaseLayout>
+
+<style>
+  .page-intro {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 680px;
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--space-10);
+  }
+</style>

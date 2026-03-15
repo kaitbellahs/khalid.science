@@ -1,0 +1,187 @@
+---
+interface TimelineEntry {
+  period: string;
+  role: string;
+  company: string;
+  description: string;
+}
+
+interface Props {
+  entries: TimelineEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="timeline" id="timeline">
+  {entries.map((entry, index) => (
+    <div class="timeline__item" data-index={index}>
+      <div class="timeline__dot"></div>
+      <div class="timeline__card">
+        <span class="timeline__period">{entry.period}</span>
+        <h3 class="timeline__role">{entry.role}</h3>
+        <span class="timeline__company" set:html={entry.company} />
+        <p class="timeline__desc" set:html={entry.description} />
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  const items = document.querySelectorAll('.timeline__item');
+  if (items.length > 0 && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -60px 0px', threshold: 0.1 }
+    );
+    items.forEach((item) => observer.observe(item));
+  }
+</script>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: var(--space-8);
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-border);
+  }
+
+  .timeline__item {
+    position: relative;
+    padding-bottom: var(--space-8);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .timeline__item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .timeline__dot {
+    position: absolute;
+    left: calc(-1 * var(--space-8) + 5px);
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 3px solid var(--color-bg);
+    box-shadow: 0 0 0 2px var(--color-accent);
+    z-index: 1;
+  }
+
+  .timeline__card {
+    padding: var(--space-5) var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-surface);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+
+  .timeline__card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .timeline__period {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline__role {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-1);
+  }
+
+  .timeline__company {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .timeline__desc {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+    margin-top: var(--space-2);
+    margin-bottom: 0;
+  }
+
+  .timeline__company a,
+  .timeline__desc a {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color var(--transition-fast);
+  }
+
+  .timeline__company a:hover,
+  .timeline__desc a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  @media (min-width: 769px) {
+    .timeline {
+      padding-left: 50%;
+    }
+
+    .timeline::before {
+      left: calc(50% - 1px);
+    }
+
+    .timeline__dot {
+      left: calc(-50% / (50% / 100%) - 1px);
+      left: calc(-1 * var(--space-8) + 5px);
+    }
+
+    .timeline__item:nth-child(odd) {
+      padding-left: 0;
+      padding-right: calc(50% + var(--space-8));
+      margin-left: calc(-100% + var(--space-8));
+      text-align: right;
+    }
+
+    .timeline__item:nth-child(odd) .timeline__dot {
+      left: auto;
+      right: calc(-1 * var(--space-8) + 5px);
+    }
+
+    .timeline__item:nth-child(even) {
+      padding-left: var(--space-8);
+    }
+
+    .timeline__item:nth-child(even) .timeline__dot {
+      left: calc(-1 * var(--space-8) + 5px);
+    }
+  }
+
+  /* Fallback for no-JS */
+  @media (prefers-reduced-motion: reduce) {
+    .timeline__item {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
