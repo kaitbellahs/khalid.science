@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = (await getCollection('blog'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Collect all tags
+const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))].sort();
+---
+
+<BaseLayout
+  title="Blog"
+  description="Artigos sobre biogerontologia, IA aplicada à biomedicina, e ciência em público."
+>
+  <section class="container section">
+    <h1>Blog</h1>
+    <p class="page-desc">Artigos, revisões e reflexões — das sementes brutas aos textos completos.</p>
+
+    <!-- Tag Filter -->
+    {allTags.length > 0 && (
+      <div class="tag-filter" id="tag-filter">
+        <button class="tag tag--filter is-active" data-tag="all">Todos</button>
+        {allTags.map((tag) => (
+          <button class="tag tag--filter" data-tag={tag}>{tag}</button>
+        ))}
+      </div>
+    )}
+
+    <!-- Posts -->
+    <div class="posts-list" id="posts-list">
+      {allPosts.map((post) => (
+        <a href={`/blog/${post.id}`} class="card post-card" data-tags={post.data.tags.join(',')} id={`post-${post.id}`}>
+          <div class="card__meta">
+            <time datetime={post.data.date.toISOString()}>
+              {post.data.date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
+            </time>
+            {post.data.lang === 'en' && <span class="lang-badge">EN</span>}
+          </div>
+          <h2 class="card__title">{post.data.title}</h2>
+          <p class="card__description">{post.data.description}</p>
+          <div class="card__tags">
+            {post.data.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {allPosts.length === 0 && (
+      <p class="empty-state">Nenhum post publicado ainda. Em breve!</p>
+    )}
+  </section>
+</BaseLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll('.tag--filter');
+  const posts = document.querySelectorAll('.post-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = (btn as HTMLElement).dataset.tag;
+
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      posts.forEach(post => {
+        const el = post as HTMLElement;
+        const postTags = el.dataset.tags?.split(',') || [];
+        if (tag === 'all' || postTags.includes(tag!)) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .page-desc {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+  }
+
+  .tag--filter {
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    font-family: var(--font-body);
+    transition: all var(--transition-fast);
+  }
+
+  .tag--filter:hover,
+  .tag--filter.is-active {
+    background: var(--color-accent-bg);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .post-card {
+    display: block;
+    text-decoration: none;
+  }
+
+  .post-card h2 { margin-top: 0; }
+
+  .card__tags {
+    display: flex;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+    margin-top: var(--space-3);
+  }
+
+  .lang-badge {
+    font-size: var(--font-size-xs);
+    padding: 0.1em 0.4em;
+    background: var(--color-primary-bg);
+    color: var(--color-primary);
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .empty-state {
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-align: center;
+    padding: var(--space-12) 0;
+  }
+</style>

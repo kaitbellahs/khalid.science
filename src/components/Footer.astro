@@ -1,0 +1,73 @@
+---
+const year = new Date().getFullYear();
+
+const links = [
+  { label: 'ORCID', href: 'https://orcid.org/0009-0004-5917-3376' },
+  { label: 'GitHub', href: 'https://github.com/kaitbellahs' },
+  { label: 'Scholar', href: 'https://scholar.google.com/citations?user=lT4DgnkAAAAJ&hl=pt-BR&authuser=1' },
+  { label: 'Lattes', href: 'https://lattes.cnpq.br/4727731542228802' },
+  { label: 'RSS', href: '/rss.xml' },
+];
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__license">
+      © {year} Khalid Ait Bellahs. Conteúdo licenciado sob
+      <a href="/license">CC BY 4.0</a>
+    </p>
+    <nav class="site-footer__links" aria-label="Links externos">
+      {links.map((link, i) => (
+        <>
+          <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+            {link.label}
+          </a>
+          {i < links.length - 1 && <span class="site-footer__sep" aria-hidden="true">|</span>}
+        </>
+      ))}
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-8) 0;
+    margin-top: var(--space-16);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    text-align: center;
+  }
+
+  .site-footer__license {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .site-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+  }
+
+  .site-footer__links a {
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .site-footer__links a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .site-footer__sep {
+    color: var(--color-border);
+  }
+</style>

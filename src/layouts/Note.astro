@@ -1,0 +1,140 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import NoteStatus from '../components/NoteStatus.astro';
+import CiteThis from '../components/CiteThis.astro';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title: string;
+  description: string;
+  status: 'seed' | 'growing' | 'evergreen';
+  created: Date;
+  updated: Date;
+  tags: string[];
+  links?: string[];
+  slug: string;
+}
+
+const { title, description, status, created, updated, tags, links, slug } = Astro.props;
+
+const updatedFormatted = updated.toLocaleDateString('pt-BR', {
+  day: '2-digit', month: 'long', year: 'numeric'
+});
+
+// Compute backlinks: find all notes that link to this note
+const allNotes = await getCollection('notes');
+const backlinks = allNotes.filter(
+  (note) => note.data.links?.includes(slug) && note.id !== slug
+);
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="container container--narrow section">
+    <header class="note-header">
+      <div class="note-header__top">
+        <NoteStatus status={status} />
+        <span class="note-header__date">Atualizada em {updatedFormatted}</span>
+      </div>
+      <h1>{title}</h1>
+      <p class="note-header__desc">{description}</p>
+      <div class="post-tags">
+        {tags.map((tag) => (
+          <a href={`/notes?tag=${tag}`} class="tag">{tag}</a>
+        ))}
+      </div>
+    </header>
+
+    <div class="prose">
+      <slot />
+    </div>
+
+    {/* Related notes */}
+    {links && links.length > 0 && (
+      <div class="note-links">
+        <h3>🔗 Notas relacionadas</h3>
+        <ul>
+          {links.map((linkSlug) => {
+            const linkedNote = allNotes.find(n => n.slug === linkSlug);
+            return linkedNote ? (
+              <li>
+                <a href={`/notes/${linkedNote.slug}`}>{linkedNote.data.title}</a>
+              </li>
+            ) : null;
+          })}
+        </ul>
+      </div>
+    )}
+
+    {/* Backlinks */}
+    {backlinks.length > 0 && (
+      <div class="note-backlinks">
+        <h3>⬅️ Notas que referenciam esta</h3>
+        <ul>
+          {backlinks.map((note) => (
+            <li>
+              <a href={`/notes/${note.id}`}>{note.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <CiteThis
+      title={title}
+      date={created}
+      url={Astro.url.href}
+    />
+  </article>
+</BaseLayout>
+
+<style>
+  .note-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .note-header__top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .note-header__date {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  .note-header__desc {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .note-links,
+  .note-backlinks {
+    margin-top: var(--space-8);
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-bg-alt);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+  }
+
+  .note-links h3,
+  .note-backlinks h3 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-3);
+    margin-top: 0;
+  }
+
+  .note-links ul,
+  .note-backlinks ul {
+    margin: 0;
+    padding-left: var(--space-4);
+  }
+</style>

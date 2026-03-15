@@ -1,0 +1,20 @@
+---
+interface Props {
+  status: 'seed' | 'growing' | 'evergreen';
+}
+
+const { status } = Astro.props;
+
+const statusMap = {
+  seed:      { emoji: '🌱', label: 'Semente', class: 'badge--seed' },
+  growing:   { emoji: '🌿', label: 'Crescendo', class: 'badge--growing' },
+  evergreen: { emoji: '🌳', label: 'Madura', class: 'badge--evergreen' },
+};
+
+const { emoji, label, class: badgeClass } = statusMap[status];
+---
+
+<span class:list={['badge', badgeClass]} title={`Status: ${label}`}>
+  <span aria-hidden="true">{emoji}</span>
+  {label}
+</span>

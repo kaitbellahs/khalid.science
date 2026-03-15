@@ -1,0 +1,55 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  url: string;
+  doi?: string;
+}
+
+const { title, date, url, doi } = Astro.props;
+
+const year = date.getFullYear();
+const dateFormatted = date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+---
+
+<aside class="cite-box" aria-label="Como citar este conteúdo">
+  <div class="cite-box__title">
+    <span aria-hidden="true">📄</span> Como citar
+  </div>
+  <div class="cite-box__entry">
+    <span class="cite-box__label">ABNT:</span>
+    AIT BELLAHS, K. {title}. <em>Blog Khalid</em>. {dateFormatted}. Disponível em: {url}. Acesso em: <span id="cite-access-date"></span>.
+  </div>
+  <div class="cite-box__entry">
+    <span class="cite-box__label">APA:</span>
+    Ait Bellahs, K. ({year}). {title}. <em>Blog Khalid</em>. {url}
+  </div>
+  <div class="cite-box__entry">
+    <span class="cite-box__label">DOI:</span>
+    {doi ? (
+      <a href={`https://doi.org/${doi}`} target="_blank" rel="noopener noreferrer">{doi}</a>
+    ) : (
+      <span class="cite-box__pending">Aguardando atribuição via Zenodo</span>
+    )}
+  </div>
+  <div class="cite-box__entry">
+    <span class="cite-box__label">Licença:</span>
+    <a href="/license">CC BY 4.0</a>
+  </div>
+</aside>
+
+<script>
+  const el = document.getElementById('cite-access-date');
+  if (el) {
+    el.textContent = new Date().toLocaleDateString('pt-BR', {
+      day: '2-digit', month: 'short', year: 'numeric'
+    });
+  }
+</script>
+
+<style>
+  .cite-box__pending {
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+</style>

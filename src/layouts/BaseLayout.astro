@@ -1,0 +1,50 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
+  jsonLD?: string;
+}
+
+const { title, description, image, type, jsonLD } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <BaseHead
+    title={title}
+    description={description}
+    image={image}
+    type={type}
+    jsonLD={jsonLD}
+  />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+  <Header />
+  <div class="theme-toggle-wrapper">
+    <ThemeToggle />
+  </div>
+  <main id="main-content">
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>
+
+<style>
+  .theme-toggle-wrapper {
+    position: fixed;
+    bottom: var(--space-4);
+    right: var(--space-4);
+    z-index: 40;
+  }
+</style>
