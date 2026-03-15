@@ -13,7 +13,7 @@ const {
   description,
   image = '/images/author.jpg',
   type = 'website',
-  canonicalURL = Astro.url.href,
+  canonicalURL = `${Astro.url.origin}${Astro.url.pathname}`,
   jsonLD,
 } = Astro.props;
 

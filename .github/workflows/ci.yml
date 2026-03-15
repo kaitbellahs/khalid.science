@@ -67,12 +67,7 @@ jobs:
         run: npm ci
 
       - name: Run lint
-        run: |
-          if npm run lint --if-present 2>/dev/null; then
-            echo "✅ Lint passed"
-          else
-            echo "⚠️ No lint script found, skipping"
-          fi
+        run: npm run lint
 
   check-links:
     name: Check Links

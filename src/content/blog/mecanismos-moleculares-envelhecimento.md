@@ -24,7 +24,7 @@ Biological aging is currently redefined by translational biogerontology as the p
 
 ---
 
-## 1. INTRODUÇÃO
+## 1 INTRODUÇÃO
 
 O envelhecimento biológico foi historicamente compreendido como um processo contínuo e inerente à biologia orgânica. Nas últimas duas décadas, evidências em biogerontologia e biologia de sistemas redefiniram o envelhecimento como um conjunto de falhas de manutenção molecular passíveis de quantificação e, teoricamente, de reversão (LÓPEZ-OTÍN *et al.*, 2013; 2023). Essa mudança de premissas, impulsionada pela disciplina interdisciplinar da *Geroscience* (KENNEDY *et al.*, 2014), direciona o foco translacional das intervenções para a expansão do período de vida saudável e funcional (*healthspan*), mais do que a simples extensão do tempo de vida total (*lifespan*).
 
@@ -38,7 +38,7 @@ A **justificativa** reside na escassez de revisões em língua portuguesa que in
 
 ---
 
-## 2. METODOLOGIA
+## 2 METODOLOGIA
 
 
 Este trabalho constitui revisão narrativa da literatura, conduzida mediante busca bibliográfica nas bases de dados PubMed/MEDLINE, Scopus, Web of Science e Google Scholar, abrangendo publicações em inglês e português. O período de cobertura estende-se de 1825 a janeiro de 2026; a inclusão de fontes históricas (GOMPERTZ, 1825; MAKEHAM, 1860; HARMAN, 1956) justifica-se pela necessidade de contextualizar a evolução conceitual dos modelos de mortalidade e envelhecimento. Os termos de busca incluíram combinações de: *cellular senescence*, *senolytics*, *aging hallmarks*, *telomere*, *mTOR*, *autophagy*, *proteostasis*, *negligible senescence*, *NAD+*, *SASP*, *rapamycin*, *epigenetic clock* e *biogerontology*. Foram priorizados artigos originais publicados em periódicos revisados por pares de alto fator de impacto, revisões sistemáticas e meta-análises. Por se tratar de revisão narrativa, não foram adotados critérios formais de inclusão/exclusão típicos de revisões sistemáticas (PRISMA); a seleção das fontes foi orientada pela relevância temática, pelo impacto citacional e pela contribuição ao arcabouço conceitual dos *hallmarks* do envelhecimento. A busca inicial identificou aproximadamente 200 publicações potencialmente relevantes, das quais foram selecionadas as fontes listadas nas Referências após leitura de títulos, resumos e, quando necessário, do texto integral.
@@ -47,20 +47,20 @@ Este trabalho constitui revisão narrativa da literatura, conduzida mediante bus
 
 ---
 
-## 3. O NOVO PARADIGMA DA BIOGERONTOLOGIA E AS EVIDÊNCIAS DE SENESCÊNCIA NEGLIGENCIÁVEL
+## 3 O NOVO PARADIGMA DA BIOGERONTOLOGIA E AS EVIDÊNCIAS DE SENESCÊNCIA NEGLIGENCIÁVEL
 
 
-### 3.1. O Paradigma da *Geroscience*: Da Terapêutica Reativa à Modulação das Causas Primárias
+### 3.1 O Paradigma da *Geroscience*: Da Terapêutica Reativa à Modulação das Causas Primárias
 
 A medicina do século XX consolidou-se sobre um paradigma terapêutico estritamente reativo: intervir nas patologias somente após sua manifestação clínica. A disciplina emergente da *Geroscience* reformula essa lógica. Conforme articulado por Kennedy *et al.* (2014), as condições crônicas associadas ao envelhecimento — incluindo diabetes tipo 2, neurodegeneração, aterosclerose e sarcopenia — não são entidades patológicas independentes, mas manifestações fisiológicas de um único processo subjacente: o declínio progressivo da homeostase celular. Blagosklonny (2006) propôs que a senescência nos mamíferos constitui uma continuação hipertrófica de vias de sinalização embrionárias em um organismo que já completou seu desenvolvimento, implicando que o envelhecimento pode ser modulado farmacologicamente. Essa proposição encontra respaldo em ensaios com rapamicina (HARRISON *et al.*, 2009).
 
 Durante o século XX, modelos prevalentes descreviam o desgaste oxidativo (danos por radicais livres) como subproduto obrigatório e determinante do declínio funcional em organismos (HARMAN, 1956; 1972). Revisões subsequentes demonstraram que a atribuição causal exclusiva a espécies reativas de oxigênio (ROS) é incompleta: em doses fisiológicas baixas, ROS atuam como sinalizadores horméticos essenciais para vias de adaptação celular, e a suplementação exógena de antioxidantes pode ser deletéria ao suprimir essa sinalização adaptativa (RISTOW; ZARSE, 2010). A dualidade dose-dependente das ROS evidencia que o envelhecimento não se reduz a um acúmulo passivo de dano oxidativo, mas envolve a desregulação progressiva de redes de sinalização redox. Paralelamente, a formulação termodinâmica clássica — que descreve o envelhecimento como consequência direta da Segunda Lei — apresenta limitações ao desconsiderar que organismos constituem sistemas abertos. Conforme o princípio das estruturas dissipativas (PRIGOGINE; NICOLIS, 1977), sistemas não isolados podem manter estados distantes do equilíbrio térmico dissipando entropia ao ambiente, sustentando renovação estrutural contínua (GLADYSHEV, 2016). Assim, a reversibilidade observada em fenômenos do envelhecimento é de natureza informacional e molecular — notadamente epigenética —, e não termodinâmica *stricto sensu*.
 
-### 3.2. Bases Evolutivas do Envelhecimento
+### 3.2 Bases Evolutivas do Envelhecimento
 
 A compreensão dos mecanismos moleculares do envelhecimento requer ancoragem nas teorias evolutivas que explicam por que o envelhecimento é prevalente, apesar de não ser universal. A teoria do acúmulo de mutações (MEDAWAR, 1952) postula que alelos deletérios com efeitos tardios escapam à pressão seletiva porque a maioria dos indivíduos em populações naturais morre por causas externas antes de manifestá-los. A teoria da pleiotropia antagônica (WILLIAMS, 1957) propõe que genes conferem vantagem reprodutiva na juventude, mas efeitos deletérios na senescência — como a supressão de hTERT, que reduz o risco oncológico precoce à custa da senescência replicativa tardia. A teoria da soma descartável (KIRKWOOD, 1977) postula que organismos alocam recursos finitos preferencialmente à reprodução, em detrimento da manutenção somática, resultando em acúmulo de dano molecular. Essas teorias não são mutuamente excludentes e explicam por que o envelhecimento predomina nos metazoários como resultado de pressões seletivas, ainda que não constitua restrição termodinâmica absoluta.
 
-### 3.3. Evidências Biológicas: Organismos com Senescência Negligenciável
+### 3.3 Evidências Biológicas: Organismos com Senescência Negligenciável
 
 A despeito da prevalência do envelhecimento explicada pelas teorias evolutivas supracitadas, a natureza oferece exemplos concretos de que a mortalidade por senescência não é universal. Diversos organismos exibem **senescência negligenciável** — definida como ausência de aumento mensurável na taxa de mortalidade com o avanço da idade, sem declínio reprodutivo ou funcional significativo (FINCH, 1990). Esses organismos constituem evidência empírica de que, em determinados contextos ecológicos e filogenéticos, o envelhecimento pode ser contornado por estratégias evolutivas alternativas.
 
@@ -72,7 +72,7 @@ A despeito da prevalência do envelhecimento explicada pelas teorias evolutivas 
 
 **d) Outros exemplos.** Tartarugas-gigantes do gênero *Aldabrachelys* e *Chelonoidis* apresentam registros de longevidade superiores a 150 anos sem sinais claros de declínio funcional associado à idade (DA SILVA *et al.*, 2022). O tubarão-da-Groenlândia (*Somniosus microcephalus*) atinge idades estimadas de 272 a 512 anos (NIELSEN *et al.*, 2016). Sequoias (*Sequoiadendron giganteum*) excedem 3.000 anos de idade. Esses exemplos convergem para uma mesma conclusão: a senescência, embora prevalente nos metazoários por razões evolutivas (cf. Seção 3.2), não constitui imposição biológica universal, sendo contornável em contextos filogenéticos e ecológicos específicos.
 
-### 3.4. Regeneração: Conservação Genômica de Programas Regenerativos
+### 3.4 Regeneração: Conservação Genômica de Programas Regenerativos
 
 **a) Axolotl (*Ambystoma mexicanum*).** Regenera membros inteiros, porções cardíacas e regiões cerebrais sem cicatriz, mediante formação de blastema regulada por vias Wnt, BMP e ácido retinoico (MCCUSKER; GARDINER, 2011).
 
@@ -82,11 +82,11 @@ A despeito da prevalência do envelhecimento explicada pelas teorias evolutivas 
 
 Esses exemplos indicam que genes associados a programas regenerativos estão conservados no genoma de vertebrados, sugerindo que a capacidade de regeneração foi evolutivamente suprimida — possivelmente como resultado de um *trade-off* entre capacidade regenerativa e supressão tumoral (POMERANTZ; BLAU, 2013).
 
-### 3.5. A Evolução da Longevidade Humana
+### 3.5 A Evolução da Longevidade Humana
 
 A expectativa de vida ao nascimento variou de aproximadamente 20 a 35 anos no Paleolítico — predominantemente devido à elevada mortalidade infantil (GURVEN; KAPLAN, 2007) — para aproximadamente 73 anos globalmente em 2023 (ROSER; ORTIZ-OSPINA; RITCHIE, 2023). Entretanto, o *lifespan* máximo documentado (Jeanne Calment, 122 anos) permanece insuperado, sugerindo que o limite biológico máximo, determinado por danos moleculares intrínsecos, não foi alterado pelas intervenções convencionais.
 
-### 3.6. Amortalidade: Uma Proposta Conceitual
+### 3.6 Amortalidade: Uma Proposta Conceitual
 
 O conceito de **amortalidade** — distinto de imortalidade — descreve um estado no qual um organismo não apresenta declínio funcional intrínseco atrelado à idade, permanecendo, entretanto, suscetível a causas externas de morte. O termo foi cunhado por Mayer (2011) em contexto sociológico e cultural. **Propõe-se aqui sua recontextualização para o âmbito biogerontológico**, como ferramenta conceitual para descrever o fenótipo demográfico observado em organismos com senescência negligenciável. Trata-se de proposta terminológica do presente autor, e não de conceito estabelecido na literatura biomédica. Em termos operacionais, sugere-se que um organismo possa ser considerado funcionalmente amortal quando satisfaz três critérios mensuráveis — os quais, ressalve-se, ainda não foram validados conjuntamente em nenhum modelo: (i) ausência de aumento da taxa de mortalidade com a idade cronológica (violação da lei de Gompertz), conforme demonstrado em *H. glaber* (RUBY *et al.*, 2018); (ii) estabilidade ou reversão da idade epigenética, quantificada por relógios como GrimAge (LU *et al.*, 2019) ou DunedinPACE (BELSKY *et al.*, 2022); e (iii) manutenção da capacidade regenerativa e da função imunológica ao longo do tempo. A amortalidade biológica assim proposta reflete o estado natural de *Hydra* e *T. dohrnii* e o perfil demográfico do rato-toupeira-pelado. A proposição de que um estado análogo possa ser alcançado em humanos constitui um horizonte teórico da *geroscience* contemporânea — plausível, mas não demonstrado —, orientando conceitualmente o desenvolvimento de intervenções focadas na extensão do período de vida saudável. Essa proposta deve ser distinguida de conceitos correlatos na literatura, como *biological immortality* (MARTÍNEZ, 1998) e *indefinite lifespan* (FINCH, 1990), com os quais compartilha fundamentos fenomenológicos, mas difere em escopo (cf. ROSE, 1991).
 
@@ -94,28 +94,28 @@ Estabelecidos o paradigma da *geroscience*, as evidências de senescência negli
 
 ---
 
-## 4. INSTABILIDADE GENÔMICA E ATRITO TELOMÉRICO
+## 4 INSTABILIDADE GENÔMICA E ATRITO TELOMÉRICO
 
 
-### 4.1. Acúmulo de Lesões no DNA e Relógio Genômico
+### 4.1 Acúmulo de Lesões no DNA e Relógio Genômico
 
 O genoma humano sofre entre 10.000 e 100.000 lesões por célula a cada 24 horas, incluindo oxidação de bases, depurinações e quebras de fita (LÓPEZ-OTÍN *et al.*, 2013). Os mecanismos de reparo — como a via de Reparo por Excisão de Bases (BER) e a via de Reparo por Excisão de Nucleotídeos (NER) — decaem com o envelhecimento, em parte pela depleção de NAD+ (GOMES *et al.*, 2013), cofator cuja biologia regulatória foi extensamente revisada por Houtkooper *et al.* (2010) e originalmente identificado como substrato da desacetilase Sir2 por Imai *et al.* (2000). A acumulação de danos nos próprios genes reparadores contribui para esse declínio (VERMEIJ *et al.*, 2016; NIEDERNHOFER *et al.*, 2018). As Quebras de Fita Dupla (DSBs), reparadas pelo mecanismo de Junção de Extremidades Não-Homólogas (NHEJ, mediado por Ku70/Ku80), acumulam mutações *frameshift* ao longo de décadas (CAMPISI, 2013).
 
-### 4.2. A Resposta a Danos no DNA (DDR) e a Senescência Induzida
+### 4.2 A Resposta a Danos no DNA (DDR) e a Senescência Induzida
 
 Quando o dano excede a capacidade de reparo, a DDR — mediada pelos sensores ATM (*Ataxia Telangiectasia Mutated*) e ATR (*ATM and Rad3-related*) — estabiliza p53 e induz p21, impondo parada permanente do ciclo celular. Esse mecanismo protetor torna-se deletério com o acúmulo de células senescentes (VAN DEURSEN, 2014).
 
-### 4.3. Telômeros e o Limite de Hayflick
+### 4.3 Telômeros e o Limite de Hayflick
 
 Os telômeros (repetições TTAGGG) perdem 50 a 200 pares de bases a cada divisão mitótica. Quando o comprimento telomérico atinge um limiar crítico — o que ocorre tipicamente após 40 a 60 divisões celulares (limite de Hayflick) —, o complexo *Shelterin* perde sua função protetora, expondo a extremidade cromossômica à DDR e induzindo senescência irreversível (MUÑOZ-ESPÍN; SERRANO, 2014).
 
-### 4.4. Telomerase (hTERT), Restrição Replicativa e Imortalização Oncogênica
+### 4.4 Telomerase (hTERT), Restrição Replicativa e Imortalização Oncogênica
 
 A transcriptase reversa telomerase (hTERT) regenera os complexos teloméricos, porém a maioria das células somáticas adultas apresenta a expressão desse gene reprimida em nível epigenético — um exemplo de pleiotropia antagônica (WILLIAMS, 1957) que reduz o risco de carcinogênese precoce em detrimento da senescência replicativa tardia. Ressalta-se que uma fração de tecidos neoplásicos transpõe essa barreira celular por meio do Alongamento Alternativo de Telômeros (ALT) via recombinação homóloga. A suplementação da telomerase utilizando vetores virais AAV proporcionou aumentos significativos na extensão da vida saudável (healthspan) e na sobrevida total em modelos murinos, sem elevar a incidência de câncer quando administrada em parâmetros controlados (BERNARDES DE JESUS *et al.*, 2012). A capacidade de contornar o limite replicativo é também demonstrada pela linhagem HeLa — derivada de células cervicais de Henrietta Lacks em 1951 —, cuja imortalidade replicativa resulta da inativação de p53 e pRb pelas oncoproteínas E6/E7 do HPV-18 combinada à reativação constitutiva de hTERT (HAYFLICK; MOORHEAD, 1961). A imortalização oncogênica, contudo, não constitui modelo de rejuvenescimento, e a fronteira molecular entre uma célula rejuvenescida e uma célula neoplásica permanece estreita (FINKEL; SERRANO; BLASCO, 2007).
 
 **Perspectivas para reativação modulada de hTERT.** Estratégias como sistemas de expressão gênica transiente (e.g., sistema Tet-On mediado por doxiciclina) e vetores de mRNA em nanopartículas lipídicas (LNP) têm sido propostos como abordagens conceituais para a reativação pulsátil e controlada de hTERT. Entretanto, protocolos específicos para essa aplicação ainda não foram publicados em estudos *peer-reviewed*, e sua viabilidade clínica permanece hipotética.
 
-### 4.5. Limitações
+### 4.5 Limitações
 
 A reativação da telomerase *in vivo* em humanos enfrenta risco de tumorigênese; nenhum ensaio clínico controlado com AAV-hTERT em humanos foi publicado. Sistemas Tet-On dependem de biodistribuição uniforme de doxiciclina. A extrapolação de resultados de linhagens imortalizadas oncogênicas para células somáticas normais deve ser cautelosa.
 
@@ -123,30 +123,30 @@ O dano genômico cumulativo e o encurtamento telomérico aqui descritos converge
 
 ---
 
-## 5. SENESCÊNCIA CELULAR, O SASP E A ESTRATÉGIA SENOLÍTICA
+## 5 SENESCÊNCIA CELULAR, O SASP E A ESTRATÉGIA SENOLÍTICA
 
 
-### 5.1. Senescência versus Apoptose
+### 5.1 Senescência versus Apoptose
 
 Quando uma célula sofre dano irreparável, enfrenta duas vias: apoptose (morte celular programada, com eliminação ordenada e sem inflamação) ou senescência (parada proliferativa permanente com manutenção da viabilidade celular). A senescência é mantida pela superexpressão de proteínas antiapoptóticas da família Bcl-2 (Bcl-xL, Bcl-w), que impedem a execução da apoptose (ZHU *et al.*, 2015). As vias p53/p21 (aguda) e p16*^INK4a^* (crônica) consolidam o bloqueio do ciclo celular (MUÑOZ-ESPÍN; SERRANO, 2014).
 
-### 5.2. O Fenótipo Secretor Associado à Senescência (SASP)
+### 5.2 O Fenótipo Secretor Associado à Senescência (SASP)
 
 Células senescentes adquirem um fenótipo secretor intenso (SASP), caracterizado pela liberação crônica de citocinas pró-inflamatórias (IL-6, IL-1α, IL-8), quimiocinas (CXCLs), metaloproteinases de matriz promotoras de degradação tecidual (MMPs 1, 3 e 9), além de fatores de crescimento associados à fibrose (VEGF, TGF-β). Parte dessa sinalização é transportada por meio de Vesículas Extracelulares (VEs) — exossomos que veiculam microRNAs associados à senescência (senomiRs) inflamatórios e moléculas sinalizadoras de dano genômico (CAMPISI, 2013). Esses mediadores sistêmicos contribuem substancialmente para o estado de inflamação crônica de baixo grau denominado *inflammaging* (FRANCESCHI *et al.*, 2000). A sinalização parácrina crônica ativa as vias JAK/STAT e NF-κB, promovendo a remodelação da matriz extracelular, o que favorece a patogênese de condições associadas ao envelhecimento, como arteriosclerose e degeneração articular.
 
-### 5.3. Propagação Parácrina da Senescência
+### 5.3 Propagação Parácrina da Senescência
 
 Fatores do SASP — em particular IL-1α, TGF-β e exossomos contendo microRNAs inflamatórios — induzem danos ao DNA e senescência em células vizinhas previamente saudáveis, por meio de sinalização autócrina e parácrina (ACOSTA *et al.*, 2013; NELSON *et al.*, 2012). Esse efeito parácrino transforma a senescência em fenômeno expansivo e não-linear, conceituado por Rando e Wyss-Coray (2021) como envelhecimento assíncrono e contagioso — no qual células cronologicamente jovens podem adquirir fenótipo senescente por exposição ao microambiente inflamatório.
 
-### 5.4. Parabiose e Fatores Circulantes
+### 5.4 Parabiose e Fatores Circulantes
 
 Experimentos de parabiose heterocrônica demonstraram que fatores presentes no sangue jovem restauram parcialmente a regeneração muscular e neurogênese no animal idoso, enquanto o sangue do animal idoso envelhece prematuramente as células-tronco do jovem (CONBOY *et al.*, 2005). Resultados sobre GDF11 como fator rejuvenescedor têm reprodutibilidade debatida (EGERMAN *et al.*, 2015).
 
-### 5.5. Senolíticos: A Combinação Dasatinibe e Quercetina (D+Q)
+### 5.5 Senolíticos: A Combinação Dasatinibe e Quercetina (D+Q)
 
 A combinação D+Q, conceitualizada por Zhu *et al.* (2015), elimina seletivamente células senescentes inibindo as *senescent cell anti-apoptotic pathways* (SCAPs). Ensaios clínicos Fase I/II em fibrose pulmonar idiopática demonstraram segurança e redução de biomarcadores de senescência (JUSTICE *et al.*, 2019). Entretanto, a toxicidade hepática e hematológica do dasatinibe e a baixa biodisponibilidade da quercetina restringem a aplicabilidade clínica ampla, evidenciando a necessidade de senolíticos de segunda geração.
 
-### 5.6. Limitações
+### 5.6 Limitações
 
 O SASP varia amplamente entre tipos celulares, tecidos e estímulos. A senescência desempenha funções homeostáticas benéficas (reparo tecidual, supressão tumoral), e sua eliminação indiscriminada pode gerar efeitos adversos — embora o experimento seminal de Baker *et al.* (2011), demonstrando que a eliminação de células p16*^INK4a^*-positivas retarda patologias associadas ao envelhecimento em camundongos, tenha estabelecido o princípio de prova para a estratégia senolítica. Os ensaios com D+Q publicados são estudos-piloto com amostras reduzidas (JUSTICE *et al.*, 2019). Biomarcadores confiáveis de carga senescente *in vivo* ainda não foram padronizados.
 
@@ -154,29 +154,29 @@ O acúmulo de células senescentes e seu secretoma inflamatório não constituem
 
 ---
 
-## 6. REGULAÇÃO METABÓLICA, AUTOFAGIA E INTERVENÇÕES GEROPROTECTORAS
+## 6 REGULAÇÃO METABÓLICA, AUTOFAGIA E INTERVENÇÕES GEROPROTECTORAS
 
-### 6.1. O Eixo mTOR/IGF-1 e a Modulação da Longevidade
+### 6.1 O Eixo mTOR/IGF-1 e a Modulação da Longevidade
 
 A atividade crônica da via mTOR antagoniza vias da autofagia, favorecendo o acúmulo de proteínas intracelulares mal dobradas. A redução genética ou farmacológica na sinalização IGF-1/mTOR apresenta correlações consolidadas com aumento do lifespan em modelos animais (FONTANA; PARTRIDGE; LONGO, 2010). Em humanos, os indivíduos com deficiência genética nos receptores de GH (síndrome de Laron) apresentam incidência drasticamente reduzida de morbidades relativas à idade, tais como desfechos oncológicos e metabólicos como o diabetes (GUEVARA-AGUIRRE *et al.*, 2011).
 
-### 6.2. AMPK, Restrição Calórica e Autofagia
+### 6.2 AMPK, Restrição Calórica e Autofagia
 
 A proteína quinase AMPK (*AMP-activated Protein Kinase*), ativada por escassez energética, inibe mTORC1 e estimula autofagia e biogênese mitocondrial (SALMINEN; KAARNIRANTA, 2012). A restrição calórica (RC) constitui a intervenção mais robustamente demonstrada para prolongar a longevidade em múltiplas espécies (MATTISON *et al.*, 2017; FONTANA; PARTRIDGE; LONGO, 2010). A autofagia — processo catabólico de reciclagem intracelular — declina com o envelhecimento por inibição crônica via mTOR e depleção de NAD+ (BURKEWITZ; ZHANG; MAIR, 2014). O eixo mitocôndria–autofagia–inflamação–morte celular constitui circuito central no envelhecimento do organismo (GREEN; GALLUZZI; KROEMER, 2011), sendo a mitofagia — remoção seletiva de mitocôndrias disfuncionais — regulada pelas proteínas PINK1/Parkin (YOULE; NARENDRA, 2011).
 
-### 6.3. Rapamicina e Rapalogues
+### 6.3 Rapamicina e Rapalogues
 
 A rapamicina, inibidor de mTORC1 mediado pelo cofator FKBP12, prolongou a sobrevida de camundongos mesmo quando administrada tardiamente (HARRISON *et al.*, 2009). Mannick *et al.* (2014) demonstraram que doses baixas de everolimus melhoraram a resposta vacinal em idosos humanos — resultado atribuído à inibição seletiva de mTORC1 sem comprometimento de mTORC2. Cabe registrar que esse estudo foi financiado pela Novartis, fabricante do everolimus, o que constitui potencial conflito de interesse a ser ponderado na interpretação dos resultados. Os ensaios PEARL e VIBRANT avaliam rapamicina em humanos saudáveis utilizando biomarcadores de envelhecimento como desfechos. Efeitos colaterais crônicos incluem dislipidemia e resistência insulínica.
 
-### 6.4. NAD+, Sirtuínas e CD38
+### 6.4 NAD+, Sirtuínas e CD38
 
 O NAD+ é cofator essencial para PARP1 (reparo de DNA) e Sirtuínas (SIRT1-SIRT7, reguladoras de cromatina, autofagia e inflamação). Com o envelhecimento, a competição por NAD+ entre PARP1 e Sirtuínas resulta em um estado de depleção metabólica competitiva (VERDIN, 2015; GOMES *et al.*, 2013). Covarrubias *et al.* (2020) demonstraram que células senescentes induzem a expansão de macrófagos com alta expressão de CD38, que degrada extracelularmente o NAD+ — conectando SASP e colapso metabólico. A inibição de CD38 restaurou NAD+ em camundongos idosos (CAMACHO-PEREIRA *et al.*, 2016).
 
-### 6.5. Outros Geroprotectores
+### 6.5 Outros Geroprotectores
 
 Espermidina (EISENBERG *et al.*, 2009), trealose (SARKAR *et al.*, 2007) e urolitina A (RYU *et al.*, 2016) induzem autofagia por vias distintas. O resveratrol demonstrou benefícios em camundongos sob dieta hipercalórica (BAUR *et al.*, 2006); contudo, ensaios clínicos em humanos apresentaram resultados insatisfatórios, possivelmente em razão de diferenças de biodisponibilidade interespécies.
 
-### 6.6. Limitações
+### 6.6 Limitações
 
 A rapamicina em doses geroprotectoras pode comprometer a imunidade adaptativa. A RC crônica apresenta baixa adesão em populações humanas não supervisionadas. A suplementação com mononucleotídeo de nicotinamida (NMN) ou ribosídeo de nicotinamida (NR) eleva NAD+ plasmático, mas os benefícios clínicos funcionais permanecem inconclusivos. O resveratrol apresenta baixa biodisponibilidade oral.
 
@@ -184,32 +184,32 @@ O declínio da autofagia e a depleção de NAD+ comprometem não apenas a recicl
 
 ---
 
-## 7. PERDA DE PROTEOSTASE E PATOLOGIA FIBRILAR
+## 7 PERDA DE PROTEOSTASE E PATOLOGIA FIBRILAR
 
 
-### 7.1. O Paradoxo de Levinthal e as Chaperonas Moleculares
+### 7.1 O Paradoxo de Levinthal e as Chaperonas Moleculares
 
 O Paradoxo de Levinthal — formulado pelo biofísico Cyrus Levinthal (c. 1968-1969) — postula que uma cadeia polipeptídica de 100 aminoácidos levaria mais tempo do que a idade do universo para explorar aleatoriamente todas as suas conformações, mas dobra-se em milissegundos *in vivo*, guiada por funis de energia livre termodinâmicos. Chaperonas moleculares (HSP70, HSP90) auxiliam o dobramento correto, porém sua expressão diminui com o envelhecimento em decorrência da depleção de NAD+/SIRT1 e da redução do fator HSF1 (MOUCHIROUD *et al.*, 2013). O proteassoma também perde eficiência, resultando na saturação do citoplasma por agregados proteicos.
 
-### 7.2. O Espectro Fibrilar: Amiloides, Tau e Corpos de Lewy
+### 7.2 O Espectro Fibrilar: Amiloides, Tau e Corpos de Lewy
 
 A nucleação de proteínas mal enoveladas frequentemente ocorre por Separação de Fase Líquido-Líquido (LLPS). Em condições fisiológicas, a LLPS gera condensados biomoleculares funcionais (grânulos de estresse, corpos P); entretanto, a transição patológica de condensados líquidos para estados de gel ou sólido fibrilar, mediada por proteínas intrinsecamente desordenadas, resulta na formação de matrizes fibrilares de folha beta. Esses agregados estão associados a manifestações patológicas específicas: placas senis de peptídeos β-amiloides e emaranhados neurofibrilares de proteína Tau hiperfosforilada na doença de Alzheimer; inclusões citoplasmáticas de α-sinucleína nos gânglios da base na doença de Parkinson; e fibras de poliglutamina na doença de Huntington. Adicionalmente, esses agregados exibem propagação do tipo príon (*prion-like propagation*), na qual exossomos ou a captação trans-sináptica transferem conformações patológicas para células vizinhas saudáveis, contribuindo para a progressão do declínio neurocognitivo (JUCKER; WALKER, 2013). Ressalva-se que, diferentemente das encefalopatias priônicas verdadeiras (mediadas por PrP^Sc^), as proteinopatias neurodegenerativas não envolvem necessariamente transmissibilidade interorganismos.
 
-### 7.3. A Cascata Amiloide e seus Limites
+### 7.3 A Cascata Amiloide e seus Limites
 
 O lecanemab (Leqembi®), aprovado pela FDA em 2023 sob aprovação acelerada e posteriormente convertida para aprovação tradicional, demonstrou desaceleração estatisticamente significativa do declínio cognitivo (−27% na escala CDR-SB em relação ao placebo em 18 meses), embora a relevância clínica dessa magnitude permaneça debatida (VAN DYCK *et al.*, 2023). Riscos incluem ARIA (*Amyloid-Related Imaging Abnormalities*), edema cerebral e micro-hemorragias. Evidências crescentes apontam a Tau hiperfosforilada — mais do que o Aβ — como correlato molecular mais direto da perda sináptica. A neuroinflamação microglial conecta a patologia amiloide ao SASP descrito na seção sobre senescência celular.
 
-### 7.4. Estresse do Retículo Endoplasmático
+### 7.4 Estresse do Retículo Endoplasmático
 
 O acúmulo de proteínas mal dobradas no retículo endoplasmático (RE) ativa a Resposta a Proteínas Desdobradas (*Unfolded Protein Response*, UPR). A ativação crônica da UPR constitui biomarcador de tecidos envelhecidos, interconectando a falha da UPR com a depleção de NAD+ e a desregulação das Sirtuínas (MOUCHIROUD *et al.*, 2013).
 
-### 7.5. Limitações
+### 7.5 Limitações
 
 Historicamente, a taxa de insucesso em ensaios clínicos direcionados à neurodegeneração excede a marca de 99%. A barreira hematoencefálica limita a entrega de fármacos ao SNC. Intervenções eficazes provavelmente exigirão abordagens combinadas (imunoterapia anti-Tau + senolíticos + restauração de proteostase + modulação de mTOR).
 
 ---
 
-## 8. CONCLUSÃO
+## 8 CONCLUSÃO
 
 A presente revisão demonstrou que o envelhecimento biológico humano resulta da convergência de eixos mecanísticos interconectados — correspondentes aos *hallmarks* primários e antagônicos propostos por López-Otín *et al.* (2013) e expandidos em 2023: instabilidade genômica e atrito telomérico, acumulação de células senescentes secretoras de SASP, desregulação metabólica do eixo mTOR/IGF-1 com declínio autofágico e depleção de NAD+, e perda de proteostase com agregação fibrilar patológica. Esses mecanismos não operam isoladamente, mas formam ciclos de retroalimentação positiva que aceleram o declínio funcional: células senescentes degradam NAD+ via CD38, a depleção de NAD+ compromete sirtuínas e reparo de DNA, e o dano genômico gera mais senescência.
 
