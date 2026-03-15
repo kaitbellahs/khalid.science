@@ -95,6 +95,6 @@ jobs:
             --offline
             --no-progress
             --include-fragments
-            --base dist
+            --root-dir dist
             'dist/**/*.html'
           fail: true
