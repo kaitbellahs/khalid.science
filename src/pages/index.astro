@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SearchWidget from '../components/SearchWidget.astro';
+import ResearchCard from '../components/ResearchCard.astro';
 import { getCollection } from 'astro:content';
 import { generatePersonLD, generateWebSiteLD } from '../utils/seo';
 
@@ -28,6 +29,13 @@ const personLD = generatePersonLD({
 
 const websiteLD = generateWebSiteLD('Khalid Ait Bellahs — Blog Científico', 'https://khalid.science');
 const combinedLD = `[${personLD},${websiteLD}]`;
+
+const researchLines = [
+  { icon: '🧬', title: 'Biogerontologia Computacional', description: 'Redes neurais para senolíticos e relógios epigenéticos.' },
+  { icon: '🔬', title: 'Mecanismos do Envelhecimento', description: 'Hallmarks, senescência celular, SASP, NAD+.' },
+  { icon: '🧪', title: 'Reprogramação Epigenética', description: 'OSK/OSKM, relógios de metilação, rejuvenescimento parcial.' },
+  { icon: '🤖', title: 'IA Translacional', description: 'LLMs, GNNs, AlphaFold para alvos geroprotectores.' },
+];
 ---
 
 <BaseLayout
@@ -73,6 +81,19 @@ const combinedLD = `[${personLD},${websiteLD}]`;
   <!-- Search -->
   <section class="container section">
     <SearchWidget />
+  </section>
+
+  <!-- Linhas de Pesquisa -->
+  <section class="container section">
+    <h2 class="section__title">Linhas de Pesquisa</h2>
+    <div class="research-home-grid">
+      {researchLines.map((line) => (
+        <ResearchCard icon={line.icon} title={line.title} description={line.description} href="/pesquisa" />
+      ))}
+    </div>
+    <p style="margin-top:var(--space-4);">
+      <a href="/pesquisa">Explorar pesquisa →</a>
+    </p>
   </section>
 
   <!-- Latest Posts -->
@@ -211,6 +232,12 @@ const combinedLD = `[${personLD},${websiteLD}]`;
     transform: translateY(-1px);
   }
 
+  .research-home-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
   .card__tags {
     display: flex;
     gap: var(--space-1);
@@ -229,5 +256,9 @@ const combinedLD = `[${personLD},${websiteLD}]`;
     }
 
     .hero__title { font-size: var(--font-size-3xl); }
+
+    .research-home-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
