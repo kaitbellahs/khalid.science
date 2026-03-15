@@ -1,0 +1,63 @@
+---
+import doiConfig from '../config/doi.json';
+
+interface Props {
+  title: string;
+  date: Date;
+  url: string;
+  doi?: string;
+}
+
+const { title, date, url, doi: articleDoi } = Astro.props;
+const doi = articleDoi || doiConfig.doi;
+
+const year = date.getFullYear();
+
+// NBR 6023:2018 — data no formato: "1 mar. 2026" (sem "de", sem zero à esquerda)
+const abntMonths = ['jan.', 'fev.', 'mar.', 'abr.', 'maio', 'jun.', 'jul.', 'ago.', 'set.', 'out.', 'nov.', 'dez.'];
+const dateABNT = `${date.getDate()} ${abntMonths[date.getMonth()]} ${year}`;
+---
+
+<aside class="cite-box" aria-label="Como citar este conteúdo">
+  <div class="cite-box__title">
+    <span aria-hidden="true">📄</span> Como citar
+  </div>
+  <div class="cite-box__entry">
+    <span class="cite-box__label">ABNT:</span>
+    AIT BELLAHS, Khalid. {title}. <em>khalid.science</em>, {dateABNT}. Disponível em: {url}. Acesso em: <span id="cite-access-date"></span>.
+  </div>
+  <div class="cite-box__entry">
+    <span class="cite-box__label">APA:</span>
+    Ait Bellahs, K. ({year}). {title}. <em>khalid.science</em>. {url}
+  </div>
+  <div class="cite-box__entry">
+    <span class="cite-box__label">DOI:</span>
+    {doi ? (
+      <a href={`https://doi.org/${doi}`} target="_blank" rel="noopener noreferrer">{doi}</a>
+    ) : (
+      <span class="cite-box__pending">Aguardando atribuição via Zenodo</span>
+    )}
+  </div>
+  <div class="cite-box__entry">
+    <span class="cite-box__label">Licença:</span>
+    <a href="/license">CC BY 4.0</a>
+  </div>
+</aside>
+
+<script>
+  // NBR 6023:2018 — data de acesso no formato ABNT: "15 mar. 2026"
+  const el = document.getElementById('cite-access-date');
+  if (el) {
+    const now = new Date();
+    const months = ['jan.', 'fev.', 'mar.', 'abr.', 'maio', 'jun.', 'jul.', 'ago.', 'set.', 'out.', 'nov.', 'dez.'];
+    el.textContent = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+  }
+</script>
+
+<style>
+  .cite-box__pending {
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+</style>
+

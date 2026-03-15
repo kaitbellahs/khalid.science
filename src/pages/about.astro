@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { generatePersonLD } from '../utils/seo';
+
+const personLD = generatePersonLD({
+  name: 'Khalid Ait Bellahs',
+  url: 'https://khalid.science/about',
+  image: 'https://khalid.science/images/author.jpg',
+  jobTitle: 'Biomédico em formação & Desenvolvedor de Software',
+  sameAs: [
+    'https://orcid.org/0009-0004-5917-3376',
+    'https://scholar.google.com/citations?user=lT4DgnkAAAAJ',
+    'https://github.com/kaitbellahs',
+    'https://lattes.cnpq.br/4727731542228802',
+  ],
+});
+---
+
+<BaseLayout
+  title="Sobre"
+  description="Khalid Ait Bellahs — biomédico em formação, desenvolvedor de software, pesquisador em biogerontologia e IA."
+  jsonLD={personLD}
+>
+  <section class="container section about-page">
+    <div class="about-layout">
+      <div class="about-text">
+        <h1>Sobre mim</h1>
+
+        <p>
+          Sou <strong>Khalid Ait Bellahs</strong> — biomédico em formação e desenvolvedor de software.
+          Pesquiso os mecanismos moleculares do envelhecimento humano e como a inteligência
+          artificial pode acelerar a descoberta de intervenções geroprotectoras. Meu trabalho
+          transita entre biogerontologia translacional, IA aplicada à farmacologia e as
+          implicações éticas e geopolíticas da longevidade radical.
+        </p>
+
+        <h2>Formação acadêmica</h2>
+        <ul>
+          <li>
+            <strong>Biomedicina (Bacharelado, em curso)</strong> — Universidade Positivo, Campus Ecoville (Curitiba/PR). 2º Semestre (2026).
+          </li>
+          <li>
+            <strong>Análise e Desenvolvimento de Sistemas (Tecnólogo, concluído)</strong> — ETEP Faculdades (2025).
+          </li>
+        </ul>
+
+        <h2>Atuação profissional</h2>
+        <p>
+          <strong>Fundador e Desenvolvedor</strong> na <strong>Trusom</strong> — empresa de desenvolvimento de software.
+          Produtos incluem TruArm (plataforma CRM/agendamento) e Social Gateway (comunicação multicanal).
+        </p>
+
+        <h2>Áreas de pesquisa</h2>
+        <ul>
+          <li>Biogerontologia translacional e mecanismos moleculares do envelhecimento</li>
+          <li>Senescência celular, telômeros, SASP e estratégias senolíticas</li>
+          <li>Inteligência Artificial aplicada à descoberta farmacológica e reprogramação epigenética</li>
+          <li>Geopolítica e ética da longevidade radical</li>
+          <li>Bioinformática e multi-ômica preditiva</li>
+          <li>Interseção entre tecnologia (IA, blockchain, DeSci) e ciências biomédicas</li>
+        </ul>
+
+        <h2>Perfis acadêmicos</h2>
+        <div class="profiles">
+          <a href="https://orcid.org/0009-0004-5917-3376" target="_blank" rel="noopener noreferrer" class="profile-link">
+            <strong>ORCID</strong>
+          </a>
+          <a href="https://scholar.google.com/citations?user=lT4DgnkAAAAJ&hl=pt-BR&authuser=1" target="_blank" rel="noopener noreferrer" class="profile-link">
+            <strong>Google Scholar</strong>
+          </a>
+          <a href="https://lattes.cnpq.br/4727731542228802" target="_blank" rel="noopener noreferrer" class="profile-link">
+            <strong>Currículo Lattes</strong>
+          </a>
+          <a href="https://github.com/kaitbellahs" target="_blank" rel="noopener noreferrer" class="profile-link">
+            <strong>GitHub</strong>
+          </a>
+        </div>
+
+        <h2>Contato</h2>
+        <ul>
+          <li>📧 <a href="mailto:kaitbellahs@gmail.com">kaitbellahs@gmail.com</a></li>
+          <li>📍 Curitiba, Paraná, Brasil</li>
+        </ul>
+      </div>
+
+      <div class="about-photo">
+        <img
+          src="/images/author.jpg"
+          alt="Khalid Ait Bellahs — foto profissional em ambiente de laboratório"
+          class="avatar avatar--lg"
+          width="280"
+          height="280"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-layout {
+    display: flex;
+    gap: var(--space-10);
+    align-items: flex-start;
+  }
+
+  .about-text {
+    flex: 1;
+  }
+
+  .about-photo {
+    flex-shrink: 0;
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-8));
+  }
+
+  .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .profile-link {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-normal);
+  }
+
+  .profile-link:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent-bg);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .about-layout {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    .about-photo {
+      position: static;
+    }
+  }
+</style>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 80" width="440" height="80">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&amp;display=swap');
+    .name { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 42px; fill: #1e293b; }
+    .dot  { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 42px; fill: #0d9488; }
+    .tld  { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 42px; fill: #0d9488; }
+    @media (prefers-color-scheme: dark) {
+      .name { fill: #e2e8f0; }
+      .dot  { fill: #2dd4bf; }
+      .tld  { fill: #2dd4bf; }
+    }
+  </style>
+  <text x="10" y="55">
+    <tspan class="name">khalid</tspan><tspan class="dot">.</tspan><tspan class="tld">science</tspan>
+  </text>
+</svg>

@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SearchWidget from '../components/SearchWidget.astro';
+import { getCollection } from 'astro:content';
+import { generatePersonLD, generateWebSiteLD } from '../utils/seo';
+
+const allPosts = (await getCollection('blog'))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const allNotes = (await getCollection('notes'))
+  .sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf())
+  .slice(0, 3);
+
+const personLD = generatePersonLD({
+  name: 'Khalid Ait Bellahs',
+  url: 'https://khalid.science',
+  image: 'https://khalid.science/images/author.jpg',
+  jobTitle: 'Biomédico em formação & Desenvolvedor de Software',
+  sameAs: [
+    'https://orcid.org/0009-0004-5917-3376',
+    'https://scholar.google.com/citations?user=lT4DgnkAAAAJ',
+    'https://github.com/kaitbellahs',
+    'https://lattes.cnpq.br/4727731542228802',
+  ],
+});
+
+const websiteLD = generateWebSiteLD('Khalid Ait Bellahs — Blog Científico', 'https://khalid.science');
+const combinedLD = `[${personLD},${websiteLD}]`;
+---
+
+<BaseLayout
+  title="Home"
+  description="Blog científico pessoal de Khalid Ait Bellahs — biogerontologia, IA aplicada à farmacologia, e ciência em público."
+  jsonLD={combinedLD}
+>
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero__content">
+      <div class="hero__text">
+        <h1 class="hero__title">
+          Khalid Ait Bellahs
+        </h1>
+        <p class="hero__subtitle">Biomédico em formação · Desenvolvedor de Software</p>
+        <p class="hero__bio">
+          Sou Khalid Ait Bellahs — biomédico em formação e desenvolvedor de software.
+          Pesquiso os mecanismos moleculares do envelhecimento humano e como a inteligência
+          artificial pode acelerar a descoberta de intervenções geroprotectoras. Meu trabalho
+          transita entre biogerontologia translacional, IA aplicada à farmacologia e as
+          implicações éticas e geopolíticas da longevidade radical. Aqui publico minhas ideias,
+          hipóteses e revisões — das sementes brutas aos artigos completos. Tudo com registro
+          temporal e licença aberta, porque ciência se faz em público.
+        </p>
+        <div class="hero__links">
+          <a href="/about" class="btn btn--primary">Sobre mim</a>
+          <a href="/blog" class="btn btn--outline">Ver publicações</a>
+        </div>
+      </div>
+      <div class="hero__avatar-wrapper">
+        <img
+          src="/images/author.jpg"
+          alt="Khalid Ait Bellahs — foto em ambiente de laboratório"
+          class="avatar avatar--sm"
+          width="150"
+          height="150"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Search -->
+  <section class="container section">
+    <SearchWidget />
+  </section>
+
+  <!-- Latest Posts -->
+  {allPosts.length > 0 && (
+    <section class="container section">
+      <h2 class="section__title">Últimos posts</h2>
+      <div class="grid grid--2">
+        {allPosts.map((post) => (
+          <a href={`/blog/${post.id}`} class="card" id={`post-${post.id}`}>
+            <div class="card__meta">
+              <time datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })}
+              </time>
+            </div>
+            <h3 class="card__title">{post.data.title}</h3>
+            <p class="card__description">{post.data.description}</p>
+            <div class="card__tags">
+              {post.data.tags.slice(0, 3).map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top:var(--space-4);">
+        <a href="/blog">Ver todos os posts →</a>
+      </p>
+    </section>
+  )}
+
+  <!-- Recent Notes -->
+  {allNotes.length > 0 && (
+    <section class="container section">
+      <h2 class="section__title">Digital Garden 🌱</h2>
+      <div class="grid grid--3">
+        {allNotes.map((note) => {
+          const statusMap = { seed: '🌱', growing: '🌿', evergreen: '🌳' } as const;
+          return (
+            <a href={`/notes/${note.id}`} class="card" id={`note-${note.id}`}>
+              <div class="card__meta">
+                <span>{statusMap[note.data.status]}</span>
+                <time datetime={note.data.updated.toISOString()}>
+                  {note.data.updated.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })}
+                </time>
+              </div>
+              <h3 class="card__title">{note.data.title}</h3>
+              <p class="card__description">{note.data.description}</p>
+            </a>
+          );
+        })}
+      </div>
+      <p style="margin-top:var(--space-4);">
+        <a href="/notes">Explorar o jardim →</a>
+      </p>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-8);
+  }
+
+  .hero__content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-10);
+  }
+
+  .hero__text { flex: 1; }
+
+  .hero__title {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__bio {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--space-6);
+    max-width: var(--max-width);
+  }
+
+  .hero__links {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .hero__avatar-wrapper {
+    flex-shrink: 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+  }
+
+  .btn--primary {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    background: var(--color-accent-light);
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .btn--outline {
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    background: transparent;
+  }
+
+  .btn--outline:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .card__tags {
+    display: flex;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+    margin-top: var(--space-3);
+  }
+
+  @media (max-width: 768px) {
+    .hero__content {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+
+    .hero__links {
+      justify-content: center;
+    }
+
+    .hero__title { font-size: var(--font-size-3xl); }
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NoteStatus from '../../components/NoteStatus.astro';
+import { getCollection } from 'astro:content';
+
+const allNotes = (await getCollection('notes'))
+  .sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
+
+const allTags = [...new Set(allNotes.flatMap(note => note.data.tags))].sort();
+---
+
+<BaseLayout
+  title="Digital Garden"
+  description="Notas interconectadas sobre biogerontologia, IA e ciência — em diferentes estágios de maturidade."
+>
+  <section class="container section">
+    <h1>Digital Garden 🌱</h1>
+    <p class="page-desc">
+      Notas em crescimento — ideias em diferentes estágios de maturidade.
+      <span class="legend">
+        <span>🌱 Semente</span>
+        <span>🌿 Crescendo</span>
+        <span>🌳 Madura</span>
+      </span>
+    </p>
+
+    {allTags.length > 0 && (
+      <div class="tag-filter" id="tag-filter">
+        <button class="tag tag--filter is-active" data-tag="all">Todas</button>
+        {allTags.map((tag) => (
+          <button class="tag tag--filter" data-tag={tag}>{tag}</button>
+        ))}
+      </div>
+    )}
+
+    <div class="grid grid--3" id="notes-grid">
+      {allNotes.map((note) => (
+        <a href={`/notes/${note.id}`} class="card note-card" data-tags={note.data.tags.join(',')} id={`note-${note.id}`}>
+          <div class="card__meta">
+            <NoteStatus status={note.data.status} />
+          </div>
+          <h2 class="card__title">{note.data.title}</h2>
+          <p class="card__description">{note.data.description}</p>
+          <div class="card__meta" style="margin-top:var(--space-2)">
+            <time datetime={note.data.updated.toISOString()}>
+              {note.data.updated.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })}
+            </time>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {allNotes.length === 0 && (
+      <p class="empty-state">O jardim está sendo plantado. Volte em breve!</p>
+    )}
+  </section>
+</BaseLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll('.tag--filter');
+  const notes = document.querySelectorAll('.note-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = (btn as HTMLElement).dataset.tag;
+      filterBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      notes.forEach(note => {
+        const el = note as HTMLElement;
+        const noteTags = el.dataset.tags?.split(',') || [];
+        el.style.display = (tag === 'all' || noteTags.includes(tag!)) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .page-desc {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .legend {
+    display: flex;
+    gap: var(--space-4);
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-2);
+  }
+
+  .tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .tag--filter {
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    font-family: var(--font-body);
+    transition: all var(--transition-fast);
+  }
+
+  .tag--filter:hover,
+  .tag--filter.is-active {
+    background: var(--color-accent-bg);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .note-card { text-decoration: none; }
+  .note-card h2 { margin-top: 0; font-size: var(--font-size-base); }
+
+  .empty-state {
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-align: center;
+    padding: var(--space-12) 0;
+  }
+</style>

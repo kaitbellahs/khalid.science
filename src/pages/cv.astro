@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Currículo"
+  description="Currículo acadêmico e profissional de Khalid Ait Bellahs."
+>
+  <section class="container container--narrow section">
+    <h1>Currículo</h1>
+
+    <div class="cv-section">
+      <h2>Formação Acadêmica</h2>
+      <div class="cv-item">
+        <div class="cv-item__header">
+          <h3>Biomedicina (Bacharelado)</h3>
+          <span class="cv-item__status">Em curso — 2º Semestre (2026)</span>
+        </div>
+        <p>Universidade Positivo — Campus Ecoville, Curitiba/PR</p>
+      </div>
+      <div class="cv-item">
+        <div class="cv-item__header">
+          <h3>Análise e Desenvolvimento de Sistemas (Tecnólogo)</h3>
+          <span class="cv-item__status cv-item__status--done">Concluído (2025)</span>
+        </div>
+        <p>ETEP Faculdades</p>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <h2>Experiência Profissional</h2>
+      <div class="cv-item">
+        <div class="cv-item__header">
+          <h3>Fundador e Desenvolvedor</h3>
+          <span class="cv-item__date">Atual</span>
+        </div>
+        <p><strong>Trusom</strong> — Empresa de desenvolvimento de software</p>
+        <ul>
+          <li><strong>TruArm:</strong> Plataforma CRM/agendamento</li>
+          <li><strong>Social Gateway:</strong> Comunicação multicanal</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <h2>Áreas de Pesquisa</h2>
+      <ul>
+        <li>Biogerontologia translacional e mecanismos moleculares do envelhecimento</li>
+        <li>Senescência celular, telômeros, SASP e estratégias senolíticas</li>
+        <li>IA aplicada à descoberta farmacológica e reprogramação epigenética</li>
+        <li>Geopolítica e ética da longevidade radical</li>
+        <li>Bioinformática e multi-ômica preditiva</li>
+        <li>Interseção entre tecnologia (IA, blockchain, DeSci) e ciências biomédicas</li>
+      </ul>
+    </div>
+
+    <div class="cv-section">
+      <h2>Produção Científica (2026)</h2>
+      <ol>
+        <li>
+          <strong>Mecanismos Moleculares do Envelhecimento Humano: Dos Hallmarks à Senescência Negligenciável</strong>
+          — Revisão narrativa
+        </li>
+        <li>
+          <strong>Inteligência Artificial na Biogerontologia Translacional: Descoberta Farmacológica e Reprogramação Epigenética</strong>
+          — Revisão narrativa com perspectiva
+        </li>
+        <li>
+          <strong>Geopolítica e Impacto Societal da Longevidade Radical</strong>
+          — Artigo de perspectiva / ensaio acadêmico
+        </li>
+      </ol>
+    </div>
+
+    <div class="cv-section">
+      <h2>Competências Técnicas</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h4>Desenvolvimento</h4>
+          <p>TypeScript, Angular, Node.js, NestJS, PostgreSQL, MongoDB, Docker</p>
+        </div>
+        <div class="skill-group">
+          <h4>Ciências</h4>
+          <p>Biologia molecular, Bioquímica, Bioinformática, Análise de dados</p>
+        </div>
+        <div class="skill-group">
+          <h4>Idiomas</h4>
+          <p>Português (nativo), Inglês (avançado), Francês (básico)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <h2>Perfis</h2>
+      <div class="profiles">
+        <a href="https://orcid.org/0009-0004-5917-3376" target="_blank" rel="noopener noreferrer">ORCID</a>
+        <a href="https://scholar.google.com/citations?user=lT4DgnkAAAAJ&hl=pt-BR&authuser=1" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        <a href="https://lattes.cnpq.br/4727731542228802" target="_blank" rel="noopener noreferrer">Lattes</a>
+        <a href="https://github.com/kaitbellahs" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+
+    <!-- <p style="margin-top:var(--space-8);">
+      <a href="/files/cv-khalid.pdf" download>📄 Download CV (PDF)</a>
+    </p> -->
+  </section>
+</BaseLayout>
+
+<style>
+  .cv-section {
+    margin-bottom: var(--space-10);
+  }
+
+  .cv-item {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .cv-item:last-child { border-bottom: none; }
+
+  .cv-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .cv-item__header h3 {
+    margin: 0;
+    font-size: var(--font-size-lg);
+  }
+
+  .cv-item__status {
+    font-size: var(--font-size-xs);
+    padding: 0.2em 0.6em;
+    border-radius: 9999px;
+    background: var(--color-accent-bg);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .cv-item__status--done {
+    background: var(--color-accent-bg);
+    color: var(--color-accent);
+  }
+
+  .cv-item__date {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .skill-group h4 {
+    margin: 0 0 var(--space-1);
+    font-size: var(--font-size-sm);
+    color: var(--color-accent);
+  }
+
+  .skill-group p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .profiles a {
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-normal);
+  }
+
+  .profiles a:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent-bg);
+    text-decoration: none;
+  }
+</style>

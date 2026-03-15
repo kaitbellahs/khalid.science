@@ -1,0 +1,159 @@
+---
+const pathname = Astro.url.pathname;
+
+const navItems = [
+  { label: 'Blog', href: '/blog' },
+  { label: 'Notas', href: '/notes' },
+  { label: 'Publicações', href: '/publications' },
+  { label: 'CV', href: '/cv' },
+  { label: 'Sobre', href: '/about' },
+];
+---
+
+<header class="site-header">
+  <nav class="site-nav container" aria-label="Navegação principal">
+    <a href="/" class="site-nav__logo" aria-label="Página inicial">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 80" class="site-nav__logo-svg" aria-hidden="true">
+        <text x="10" y="55">
+          <tspan style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:42px;fill:var(--color-text)">khalid</tspan><tspan style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:42px;fill:var(--color-accent)">.</tspan><tspan style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:42px;fill:var(--color-accent)">science</tspan>
+        </text>
+      </svg>
+    </a>
+
+    <button
+      class="site-nav__toggle"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6" class="line-top" />
+        <line x1="3" y1="12" x2="21" y2="12" class="line-mid" />
+        <line x1="3" y1="18" x2="21" y2="18" class="line-bot" />
+      </svg>
+    </button>
+
+    <ul id="nav-menu" class="site-nav__menu" role="menubar">
+      {navItems.map((item) => (
+        <li role="none">
+          <a
+            href={item.href}
+            role="menuitem"
+            class:list={['site-nav__link', { 'is-active': pathname.startsWith(item.href) }]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector('.site-nav__toggle') as HTMLButtonElement;
+  const menu = document.getElementById('nav-menu')!;
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu.classList.toggle('is-open');
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+  }
+
+  .site-nav__logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: opacity var(--transition-normal);
+  }
+
+  .site-nav__logo:hover { opacity: 0.8; text-decoration: none; }
+
+  .site-nav__logo-svg {
+    height: 28px;
+    width: auto;
+  }
+
+
+
+  .site-nav__toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: var(--space-2);
+  }
+
+  .site-nav__menu {
+    display: flex;
+    list-style: none;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav__link {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: color var(--transition-fast), background var(--transition-fast);
+  }
+
+  .site-nav__link:hover {
+    color: var(--color-text);
+    background: var(--color-bg-alt);
+    text-decoration: none;
+  }
+
+  .site-nav__link.is-active {
+    color: var(--color-accent);
+    background: var(--color-accent-bg);
+  }
+
+  @media (max-width: 768px) {
+    .site-nav__toggle { display: block; }
+
+    .site-nav__menu {
+      display: none;
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      flex-direction: column;
+      padding: var(--space-4);
+      gap: 0;
+    }
+
+    .site-nav__menu.is-open { display: flex; }
+
+    .site-nav__link {
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--font-size-base);
+    }
+  }
+</style>

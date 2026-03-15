@@ -1,0 +1,6 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "khalid-science"
+compatibility_date = "2026-03-15"
+
+[assets]
+directory = "./dist"

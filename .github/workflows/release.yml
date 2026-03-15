@@ -1,0 +1,170 @@
+name: Auto-Release + Zenodo DOI
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+
+jobs:
+  release:
+    name: Release & DOI
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          if git rev-parse "v${{ steps.version.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "⚠️ Tag v${{ steps.version.outputs.version }} already exists"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── Zenodo: Create draft deposition and reserve DOI ──
+      - name: Create Zenodo deposition (reserve DOI)
+        if: steps.check_tag.outputs.exists == 'false'
+        id: zenodo
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          # Sanitize PR title for JSON
+          SAFE_TITLE=$(echo "$PR_TITLE" | sed 's/["\]/\\&/g')
+
+          # Create a new draft deposition
+          RESPONSE=$(curl -sf -X POST "https://zenodo.org/api/deposit/depositions" \
+            -H "Authorization: Bearer $ZENODO_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"metadata\": {
+                \"title\": \"khalid.science v${RELEASE_VERSION}\",
+                \"upload_type\": \"publication\",
+                \"publication_type\": \"workingpaper\",
+                \"description\": \"Release ${RELEASE_TAG} — ${SAFE_TITLE}\",
+                \"creators\": [{\"name\": \"Ait Bellahs, Khalid\", \"orcid\": \"0009-0004-5917-3376\"}],
+                \"license\": \"cc-by-4.0\",
+                \"keywords\": [\"biogerontologia\", \"longevidade\", \"ciência aberta\"]
+              }
+            }")
+
+          if [ $? -ne 0 ] || [ -z "$RESPONSE" ]; then
+            echo "❌ Zenodo API failed"
+            exit 1
+          fi
+
+          # Extract DOI and deposition ID
+          DOI=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['metadata']['prereserve_doi']['doi'])")
+          DEP_ID=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+          BUCKET=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['links']['bucket'])")
+
+          if [ -z "$DOI" ] || [ -z "$DEP_ID" ] || [ -z "$BUCKET" ]; then
+            echo "❌ Failed to extract DOI/ID/Bucket from Zenodo response"
+            exit 1
+          fi
+
+          echo "doi=$DOI" >> "$GITHUB_OUTPUT"
+          echo "deposition_id=$DEP_ID" >> "$GITHUB_OUTPUT"
+          echo "bucket=$BUCKET" >> "$GITHUB_OUTPUT"
+          echo "✅ Reserved DOI: $DOI (deposition $DEP_ID)"
+
+      # ── Commit DOI to site config ──
+      - name: Write DOI to site config
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          cat > src/config/doi.json << EOF
+          {
+            "doi": "${{ steps.zenodo.outputs.doi }}",
+            "version": "${{ steps.version.outputs.version }}",
+            "zenodoId": "${{ steps.zenodo.outputs.deposition_id }}"
+          }
+          EOF
+          echo "📝 DOI config written: ${{ steps.zenodo.outputs.doi }}"
+
+      - name: Commit DOI
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/config/doi.json
+          git commit -m "chore(doi): ${{ steps.zenodo.outputs.doi }} [skip ci]"
+          git push origin main
+
+      # ── Create tag and release ──
+      - name: Create tag
+        if: steps.check_tag.outputs.exists == 'false'
+        run: |
+          git tag -a "${{ steps.version.outputs.tag }}" -m "Release ${{ steps.version.outputs.tag }}"
+          git push origin "${{ steps.version.outputs.tag }}"
+
+      - name: Create GitHub Release
+        if: steps.check_tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          RELEASE_DOI: ${{ steps.zenodo.outputs.doi }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            --title "${RELEASE_TAG} — ${PR_TITLE}" \
+            --notes "DOI: [\`${RELEASE_DOI}\`](https://doi.org/${RELEASE_DOI})" \
+            --latest
+
+      # ── Upload archive to Zenodo and publish ──
+      - name: Upload to Zenodo
+        if: steps.check_tag.outputs.exists == 'false'
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+        run: |
+          # Create archive
+          git archive --format=zip --prefix="khalid.science-${{ steps.version.outputs.version }}/" \
+            HEAD -o /tmp/release.zip
+
+          # Upload to Zenodo bucket
+          HTTP_CODE=$(curl -sf -o /dev/null -w "%{http_code}" \
+            -X PUT "${{ steps.zenodo.outputs.bucket }}/khalid.science-${{ steps.version.outputs.version }}.zip" \
+            -H "Authorization: Bearer $ZENODO_TOKEN" \
+            -H "Content-Type: application/octet-stream" \
+            --data-binary @/tmp/release.zip)
+
+          if [ "$HTTP_CODE" -lt 200 ] || [ "$HTTP_CODE" -ge 300 ]; then
+            echo "❌ Upload to Zenodo failed (HTTP $HTTP_CODE)"
+            exit 1
+          fi
+
+          echo "📦 Archive uploaded to Zenodo (HTTP $HTTP_CODE)"
+
+      - name: Publish Zenodo deposition
+        if: steps.check_tag.outputs.exists == 'false'
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+        run: |
+          HTTP_CODE=$(curl -sf -o /dev/null -w "%{http_code}" \
+            -X POST "https://zenodo.org/api/deposit/depositions/${{ steps.zenodo.outputs.deposition_id }}/actions/publish" \
+            -H "Authorization: Bearer $ZENODO_TOKEN")
+
+          if [ "$HTTP_CODE" -lt 200 ] || [ "$HTTP_CODE" -ge 300 ]; then
+            echo "❌ Zenodo publish failed (HTTP $HTTP_CODE)"
+            exit 1
+          fi
+
+          echo "🎉 Zenodo published! DOI: https://doi.org/${{ steps.zenodo.outputs.doi }}"

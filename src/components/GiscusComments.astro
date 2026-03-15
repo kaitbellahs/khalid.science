@@ -1,0 +1,91 @@
+---
+interface Props {
+  repo?: string;
+  repoId?: string;
+  category?: string;
+  categoryId?: string;
+}
+
+const {
+  repo = 'kaitbellahs/khalid.science',
+  repoId = 'R_kgDORnWt7w',
+  category = 'Comentários',
+  categoryId = 'DIC_kwDORnWt784C4dBt',
+} = Astro.props;
+
+const hasConfig = repo && repoId && category && categoryId;
+---
+
+{hasConfig ? (
+  <section class="giscus-wrapper" id="giscus-wrapper" aria-label="Comentários">
+    <noscript>
+      <p>Ative o JavaScript para ver os comentários.</p>
+    </noscript>
+  </section>
+) : (
+  <section class="giscus-placeholder" aria-label="Comentários">
+    <p class="giscus-placeholder__text">
+      💬 Comentários serão habilitados em breve via <a href="https://giscus.app" target="_blank" rel="noopener noreferrer">Giscus</a>.
+    </p>
+  </section>
+)}
+
+<script define:vars={{ repo, repoId, category, categoryId, hasConfig }}>
+  if (hasConfig) {
+    const wrapper = document.getElementById('giscus-wrapper');
+    if (wrapper) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            observer.disconnect();
+
+            const isDark = document.documentElement.classList.contains('dark') ||
+              (!document.documentElement.classList.contains('light') &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('data-repo', repo);
+            script.setAttribute('data-repo-id', repoId);
+            script.setAttribute('data-category', category);
+            script.setAttribute('data-category-id', categoryId);
+            script.setAttribute('data-mapping', 'url');
+            script.setAttribute('data-strict', '0');
+            script.setAttribute('data-reactions-enabled', '1');
+            script.setAttribute('data-emit-metadata', '0');
+            script.setAttribute('data-input-position', 'bottom');
+            script.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            script.setAttribute('data-lang', 'pt');
+            script.setAttribute('data-loading', 'lazy');
+            script.crossOrigin = 'anonymous';
+            script.async = true;
+
+            wrapper.appendChild(script);
+          }
+        });
+      }, { rootMargin: '200px' });
+
+      observer.observe(wrapper);
+    }
+  }
+</script>
+
+<style>
+  .giscus-wrapper {
+    margin-top: var(--space-8);
+    min-height: 200px;
+  }
+
+  .giscus-placeholder {
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--border-radius);
+    text-align: center;
+  }
+
+  .giscus-placeholder__text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+</style>

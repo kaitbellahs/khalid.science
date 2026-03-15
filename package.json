@@ -1,0 +1,34 @@
+{
+  "name": "khalid-science",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Blog científico pessoal de Khalid Ait Bellahs — biogerontologia, IA e longevidade.",
+  "author": "Khalid Ait Bellahs <kaitbellahs@gmail.com>",
+  "license": "CC-BY-4.0",
+  "homepage": "https://khalid.science",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaitbellahs/khalid.science"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "postbuild": "npx pagefind --site dist",
+    "preview": "astro preview",
+    "lint": "astro check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.1.1",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
+    "astro": "^6.0.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.7",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Licença"
+  description="Licença Creative Commons Atribuição 4.0 Internacional (CC BY 4.0)"
+>
+  <section class="container container--narrow section">
+    <h1>Licença</h1>
+
+    <div class="license-badge">
+      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://licensebuttons.net/l/by/4.0/88x31.png" alt="Creative Commons License CC BY 4.0" width="88" height="31" />
+      </a>
+    </div>
+
+    <p>
+      Todo o conteúdo deste site é licenciado sob a licença
+      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+        <strong>Creative Commons Atribuição 4.0 Internacional (CC BY 4.0)</strong>
+      </a>,
+      salvo indicação contrária.
+    </p>
+
+    <h2>Você é livre para:</h2>
+    <ul>
+      <li><strong>Compartilhar</strong> — copiar e redistribuir o material em qualquer suporte ou formato</li>
+      <li><strong>Adaptar</strong> — remixar, transformar e criar a partir do material para qualquer fim, mesmo que comercial</li>
+    </ul>
+
+    <h2>De acordo com os seguintes termos:</h2>
+    <ul>
+      <li>
+        <strong>Atribuição</strong> — Você deve dar o crédito apropriado, prover um link para a licença e indicar se mudanças foram feitas. Você deve fazê-lo em qualquer circunstância razoável, mas de maneira alguma que sugira ao licenciante a apoiar você ou o seu uso.
+      </li>
+    </ul>
+
+    <h2>Código-fonte</h2>
+    <p>
+      O código-fonte deste site está disponível em
+      <a href="https://github.com/kaitbellahs/khalid.science" target="_blank" rel="noopener noreferrer">GitHub</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .license-badge {
+    margin: var(--space-6) 0;
+  }
+
+  .license-badge img {
+    border-radius: 4px;
+  }
+</style>
