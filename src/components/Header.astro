@@ -13,7 +13,11 @@ const navItems = [
 <header class="site-header">
   <nav class="site-nav container" aria-label="Navegação principal">
     <a href="/" class="site-nav__logo" aria-label="Página inicial">
-      <img src="/images/logo.svg" alt="khalid.science" class="site-nav__logo-img" width="180" height="32" />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 80" class="site-nav__logo-svg" aria-hidden="true">
+        <text x="10" y="55">
+          <tspan style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:42px;fill:var(--color-text)">khalid</tspan><tspan style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:42px;fill:var(--color-accent)">.</tspan><tspan style="font-family:'JetBrains Mono',monospace;font-weight:500;font-size:42px;fill:var(--color-accent)">science</tspan>
+        </text>
+      </svg>
     </a>
 
     <button
@@ -83,10 +87,12 @@ const navItems = [
 
   .site-nav__logo:hover { opacity: 0.8; text-decoration: none; }
 
-  .site-nav__logo-img {
+  .site-nav__logo-svg {
     height: 28px;
     width: auto;
   }
+
+
 
   .site-nav__toggle {
     display: none;

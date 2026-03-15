@@ -1,0 +1,26 @@
+language: "pt-BR"
+reviews:
+  profile: "assertive"
+  request_changes_workflow: true
+  high_level_summary: true
+  poem: false
+  review_status: true
+  auto_review:
+    enabled: true
+    drafts: false
+  path_instructions:
+    - path: "src/content/**"
+      instructions: |
+        Verifique: frontmatter YAML completo (title, date, description, tags).
+        Verifique: citações ABNT no corpo do texto (sobrenome em CAIXA ALTA nas citações indiretas).
+        Verifique: links internos apontam para rotas válidas.
+    - path: "src/components/**"
+      instructions: |
+        Verifique: acessibilidade (alt em imagens, aria-labels em botões).
+        Verifique: variáveis CSS (var(--nome)) em vez de cores hardcoded.
+    - path: "src/pages/**"
+      instructions: |
+        Verifique: SEO (title, meta description, canonical URL, OG tags).
+        Verifique: Schema.org JSON-LD presente e com URLs reais (khalid.science).
+chat:
+  auto_reply: true

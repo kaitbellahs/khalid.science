@@ -11,13 +11,14 @@
     "url": "https://github.com/kaitbellahs/khalid.science"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=20"
   },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "postbuild": "npx pagefind --site dist",
     "preview": "astro preview",
+    "lint": "astro check",
     "astro": "astro"
   },
   "dependencies": {
@@ -25,5 +26,9 @@
     "@astrojs/rss": "^4.0.17",
     "@astrojs/sitemap": "^3.7.1",
     "astro": "^6.0.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.7",
+    "typescript": "^5.9.3"
   }
 }

@@ -39,6 +39,12 @@ const jsonLD = generateScholarlyArticleLD({
   <article class="container container--narrow section">
     <header class="post-header">
       <h1>{title}</h1>
+      <p class="post-author">
+        Khalid Ait Bellahs
+        <a href="https://orcid.org/0009-0004-5917-3376" target="_blank" rel="noopener noreferrer" class="post-author__orcid" title="ORCID">
+          ⓘ 0009-0004-5917-3376
+        </a>
+      </p>
       <div class="post-meta">
         <time datetime={date.toISOString()}>📅 {dateFormatted}</time>
         {updated && (
