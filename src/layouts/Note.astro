@@ -54,10 +54,10 @@ const backlinks = allNotes.filter(
         <h3>🔗 Notas relacionadas</h3>
         <ul>
           {links.map((linkSlug) => {
-            const linkedNote = allNotes.find(n => n.slug === linkSlug);
+            const linkedNote = allNotes.find(n => n.id === linkSlug);
             return linkedNote ? (
               <li>
-                <a href={`/notes/${linkedNote.slug}`}>{linkedNote.data.title}</a>
+                <a href={`/notes/${linkedNote.id}`}>{linkedNote.data.title}</a>
               </li>
             ) : null;
           })}
