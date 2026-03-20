@@ -30,8 +30,9 @@ const { entries } = Astro.props;
 <script>
   const items = document.querySelectorAll('.timeline__item');
   const timeline = document.getElementById('timeline');
-  if (timeline) timeline.classList.add('js-enhanced');
-  if (items.length > 0 && 'IntersectionObserver' in window) {
+  const canObserve = items.length > 0 && 'IntersectionObserver' in window;
+  if (timeline && canObserve) {
+    timeline.classList.add('js-enhanced');
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
