@@ -1,6 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EducationCard from '../components/EducationCard.astro';
+import { generatePersonLD } from '../utils/seo';
+
+const personLD = generatePersonLD({
+  name: 'Khalid Ait Bellahs',
+  url: 'https://khalid.science/formacao',
+  image: 'https://khalid.science/images/author.jpg',
+  jobTitle: 'Biomédico em formação & Desenvolvedor de Software',
+  sameAs: [
+    'https://orcid.org/0009-0004-5917-3376',
+    'https://scholar.google.com/citations?user=lT4DgnkAAAAJ',
+  ],
+});
 
 const education = [
   {
@@ -36,6 +48,7 @@ const certifications = [
 <BaseLayout
   title="Formação"
   description="Formação acadêmica e certificações de Khalid Ait Bellahs — Biomedicina (Universidade Positivo), ADS (UniBF), e certificações profissionais."
+  jsonLD={personLD}
 >
   <section class="container section">
     <h1>Formação</h1>

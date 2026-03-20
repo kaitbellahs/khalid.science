@@ -1,10 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { generatePersonLD } from '../utils/seo';
+
+const personLD = generatePersonLD({
+  name: 'Khalid Ait Bellahs',
+  url: 'https://khalid.science/cv',
+  image: 'https://khalid.science/images/author.jpg',
+  jobTitle: 'Biomédico em formação & Engenheiro de Software Full-Stack',
+  sameAs: [
+    'https://orcid.org/0009-0004-5917-3376',
+    'https://scholar.google.com/citations?user=lT4DgnkAAAAJ',
+    'https://github.com/kaitbellahs',
+    'https://lattes.cnpq.br/4727731542228802',
+  ],
+});
 ---
 
 <BaseLayout
   title="Currículo"
   description="Currículo acadêmico e profissional de Khalid Ait Bellahs — biomédico em formação, desenvolvedor full-stack e pesquisador em biogerontologia."
+  image="/images/author.jpg"
+  type="profile"
+  jsonLD={personLD}
 >
   <section class="container container--narrow section">
     <h1>Currículo</h1>

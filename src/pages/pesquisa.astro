@@ -1,6 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ResearchCard from '../components/ResearchCard.astro';
+import { generatePersonLD } from '../utils/seo';
+
+const personLD = generatePersonLD({
+  name: 'Khalid Ait Bellahs',
+  url: 'https://khalid.science/pesquisa',
+  image: 'https://khalid.science/images/author.jpg',
+  jobTitle: 'Pesquisador em Biogerontologia',
+  sameAs: [
+    'https://orcid.org/0009-0004-5917-3376',
+    'https://scholar.google.com/citations?user=lT4DgnkAAAAJ',
+  ],
+});
 
 const researchLines = [
   {
@@ -29,6 +41,7 @@ const researchLines = [
 <BaseLayout
   title="Pesquisa"
   description="Linhas de pesquisa de Khalid Ait Bellahs — biogerontologia computacional, mecanismos do envelhecimento, reprogramação epigenética e IA translacional."
+  jsonLD={personLD}
 >
   <section class="container section">
     <h1>Linhas de Pesquisa</h1>

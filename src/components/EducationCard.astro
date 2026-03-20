@@ -39,7 +39,7 @@ const { label, className } = statusConfig[status];
 
   .education-card:hover {
     border-color: var(--color-accent);
-    box-shadow: 0 4px 20px rgba(13, 148, 136, 0.08);
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--color-accent) 8%, transparent);
   }
 
   .education-card__header {
@@ -70,23 +70,23 @@ const { label, className } = statusConfig[status];
   }
 
   .status--done {
-    background: #f0fdf4;
-    color: #15803d;
+    --_status-color: #15803d;
+    background: color-mix(in srgb, var(--_status-color) 10%, transparent);
+    color: var(--_status-color);
   }
 
   :root.dark .status--done {
-    background: rgba(21, 128, 61, 0.15);
-    color: #4ade80;
+    --_status-color: #4ade80;
   }
 
   .status--paused {
-    background: #fffbeb;
-    color: #b45309;
+    --_status-color: #b45309;
+    background: color-mix(in srgb, var(--_status-color) 10%, transparent);
+    color: var(--_status-color);
   }
 
   :root.dark .status--paused {
-    background: rgba(180, 83, 9, 0.15);
-    color: #fbbf24;
+    --_status-color: #fbbf24;
   }
 
   .education-card__degree {

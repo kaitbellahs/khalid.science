@@ -1,6 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Timeline from '../components/Timeline.astro';
+import { generatePersonLD } from '../utils/seo';
+
+const personLD = generatePersonLD({
+  name: 'Khalid Ait Bellahs',
+  url: 'https://khalid.science/carreira',
+  image: 'https://khalid.science/images/author.jpg',
+  jobTitle: 'CEO/CTO & Fundador — Trusom Innovation',
+  sameAs: [
+    'https://orcid.org/0009-0004-5917-3376',
+    'https://github.com/kaitbellahs',
+  ],
+});
 
 const careerEntries = [
   {
@@ -69,6 +81,7 @@ const careerEntries = [
 <BaseLayout
   title="Carreira"
   description="Trajetória profissional de Khalid Ait Bellahs — de arquiteto de soluções a CEO de startups de tecnologia, passando por grandes projetos iOS para governo e bancos."
+  jsonLD={personLD}
 >
   <section class="container section">
     <h1>Carreira</h1>

@@ -29,6 +29,8 @@ const { entries } = Astro.props;
 
 <script>
   const items = document.querySelectorAll('.timeline__item');
+  const timeline = document.getElementById('timeline');
+  if (timeline) timeline.classList.add('js-enhanced');
   if (items.length > 0 && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -61,7 +63,7 @@ const { entries } = Astro.props;
     background: var(--color-border);
   }
 
-  .timeline__item {
+  .timeline.js-enhanced .timeline__item {
     position: relative;
     padding-bottom: var(--space-8);
     opacity: 0;
@@ -69,7 +71,12 @@ const { entries } = Astro.props;
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
-  .timeline__item.is-visible {
+  .timeline__item {
+    position: relative;
+    padding-bottom: var(--space-8);
+  }
+
+  .timeline.js-enhanced .timeline__item.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -97,7 +104,7 @@ const { entries } = Astro.props;
 
   .timeline__card:hover {
     transform: scale(1.02);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 20px color-mix(in srgb, var(--color-text) 6%, transparent);
   }
 
   .timeline__period {
@@ -152,7 +159,6 @@ const { entries } = Astro.props;
     }
 
     .timeline__dot {
-      left: calc(-50% / (50% / 100%) - 1px);
       left: calc(-1 * var(--space-8) + 5px);
     }
 
@@ -177,9 +183,9 @@ const { entries } = Astro.props;
     }
   }
 
-  /* Fallback for no-JS */
+  /* Fallback for reduced-motion preference */
   @media (prefers-reduced-motion: reduce) {
-    .timeline__item {
+    .timeline.js-enhanced .timeline__item {
       opacity: 1;
       transform: none;
     }

@@ -6,7 +6,7 @@ description: Git workflow e padrões para PRs do blog científico khalid.science
 
 ## Branch Strategy: GitHub Flow Simplificado
 
-```
+```text
 main ← produção (deploy automático via Cloudflare Pages)
  └── dev ← integração (staging)
       └── devs/ka ← branch de trabalho do Khalid
@@ -22,7 +22,7 @@ main ← produção (deploy automático via Cloudflare Pages)
 
 ## Convenção de Commits: Conventional Commits v1.0
 
-```
+```text
 <tipo>(<escopo>): <descrição imperativa>
 
 [corpo opcional]
@@ -156,7 +156,7 @@ gh pr merge {PR_ID} --squash --delete-branch=false
 npm version patch  # ou minor/major
 
 # 2. Push da tag
-git push origin devs/ka
+git push origin devs/ka --tags
 
 # 3. PR de release
 gh pr create \
@@ -227,7 +227,7 @@ gh label create "release" --color "0e8a16" --description "PR de release para mai
 
 ## Resumo Visual do Fluxo
 
-```
+```text
 devs/ka ──commit──push──► PR → dev
                             │
                             ├── CI Build ✅
