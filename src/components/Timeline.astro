@@ -13,7 +13,7 @@ interface Props {
 const { entries } = Astro.props;
 ---
 
-<div class="timeline" id="timeline">
+<div class="timeline">
   {entries.map((entry, index) => (
     <div class="timeline__item" data-index={index}>
       <div class="timeline__dot"></div>
@@ -28,10 +28,11 @@ const { entries } = Astro.props;
 </div>
 
 <script>
-  const items = document.querySelectorAll('.timeline__item');
-  const timeline = document.getElementById('timeline');
-  const canObserve = items.length > 0 && 'IntersectionObserver' in window;
-  if (timeline && canObserve) {
+  document.querySelectorAll('.timeline').forEach((timeline) => {
+    const items = timeline.querySelectorAll('.timeline__item');
+    const canObserve = items.length > 0 && 'IntersectionObserver' in window;
+    if (!canObserve) return;
+
     timeline.classList.add('js-enhanced');
     const observer = new IntersectionObserver(
       (entries) => {
@@ -45,7 +46,7 @@ const { entries } = Astro.props;
       { rootMargin: '0px 0px -60px 0px', threshold: 0.1 }
     );
     items.forEach((item) => observer.observe(item));
-  }
+  });
 </script>
 
 <style>
