@@ -4,11 +4,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Currículo"
-  description="Currículo acadêmico e profissional de Khalid Ait Bellahs."
+  description="Currículo acadêmico e profissional de Khalid Ait Bellahs — biomédico em formação, desenvolvedor full-stack e pesquisador em biogerontologia."
 >
   <section class="container container--narrow section">
     <h1>Currículo</h1>
 
+    <!-- ── Formação Acadêmica ── -->
     <div class="cv-section">
       <h2>Formação Acadêmica</h2>
       <div class="cv-item">
@@ -27,21 +28,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- ── Experiência Profissional ── -->
     <div class="cv-section">
       <h2>Experiência Profissional</h2>
+
       <div class="cv-item">
         <div class="cv-item__header">
-          <h3>Fundador e Desenvolvedor</h3>
-          <span class="cv-item__date">Atual</span>
+          <h3>Fundador & Engenheiro de Software Full-Stack</h3>
+          <span class="cv-item__date">2024 – Atual</span>
         </div>
-        <p><strong>Trusom</strong> — Empresa de desenvolvimento de software</p>
+        <p><strong>Trusom</strong> — Empresa de desenvolvimento de software · Curitiba/PR</p>
         <ul>
-          <li><strong>TruArm:</strong> Plataforma CRM/agendamento</li>
-          <li><strong>Social Gateway:</strong> Comunicação multicanal</li>
+          <li>
+            <strong>TruArm</strong> — Plataforma SaaS de gestão clínica e empresarial (CRM + ERP).
+            Arquitetura multi-tenant com RBAC granular, módulos de agendamento, formulários dinâmicos,
+            gestão inteligente de estoque com integração ERP, relatórios PDF comparativos e
+            comunicação em tempo real via WebSockets.
+          </li>
+          <li>
+            <strong>Social Gateway</strong> — Plataforma de comunicação multicanal para atendimento
+            ao cliente, integrando múltiplos canais em interface unificada.
+          </li>
         </ul>
+        <p class="cv-item__tech">
+          <strong>Stack:</strong> TypeScript · NestJS · React · Next.js · MariaDB · TypeORM ·
+          PostgreSQL · MongoDB · Socket.IO · Docker · Cloudflare Workers
+        </p>
       </div>
     </div>
 
+    <!-- ── Áreas de Pesquisa ── -->
     <div class="cv-section">
       <h2>Áreas de Pesquisa</h2>
       <ul>
@@ -54,34 +70,83 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </ul>
     </div>
 
+    <!-- ── Produção Científica ── -->
     <div class="cv-section">
-      <h2>Produção Científica (2026)</h2>
+      <h2>Produção Científica</h2>
+
+      <h3 class="cv-subsection-title">Artigos Acadêmicos (2026)</h3>
       <ol>
         <li>
           <strong>Mecanismos Moleculares do Envelhecimento Humano: Dos Hallmarks à Senescência Negligenciável</strong>
-          — Revisão narrativa
+          — Revisão narrativa · <a href="/blog/mecanismos-moleculares-envelhecimento">Leia</a>
         </li>
         <li>
           <strong>Inteligência Artificial na Biogerontologia Translacional: Descoberta Farmacológica e Reprogramação Epigenética</strong>
-          — Revisão narrativa com perspectiva
+          — Revisão narrativa com perspectiva · <a href="/blog/ia-biogerontologia-translacional">Leia</a>
         </li>
         <li>
           <strong>Geopolítica e Impacto Societal da Longevidade Radical</strong>
-          — Artigo de perspectiva / ensaio acadêmico
+          — Artigo de perspectiva / ensaio acadêmico · <a href="/blog/geopolitica-longevidade-radical">Leia</a>
+        </li>
+      </ol>
+
+      <h3 class="cv-subsection-title">Divulgação Científica (2026)</h3>
+      <ol>
+        <li>
+          <strong>Reprogramação epigenética em humanos: Life Biosciences prepara primeiro ensaio clínico para 2026</strong>
+          · <a href="/blog/reprogramacao-epigenetica-humanos-2026">Leia</a>
+        </li>
+        <li>
+          <strong>70+ ensaios clínicos de senolíticos: o campo que cresceu 60% em 3 anos</strong>
+          · <a href="/blog/ensaios-clinicos-senoliticos-2025">Leia</a>
+        </li>
+        <li>
+          <strong>GLP-1 e longevidade: como agonistas de incretinas surpreenderam a gerontologia</strong>
+          · <a href="/blog/glp1-longevidade-incretinas">Leia</a>
+        </li>
+        <li>
+          <strong>Urolitina A e saúde mitocondrial: o que o estudo iScience 2025 revelou</strong>
+          · <a href="/blog/urolitina-a-saude-mitocondrial">Leia</a>
+        </li>
+        <li>
+          <strong>O pipeline de 2026: Retro, Rubedo, Juvena, Cyclarity e a corrida por dados de Fase I</strong>
+          · <a href="/blog/pipeline-longevidade-2026">Leia</a>
         </li>
       </ol>
     </div>
 
+    <!-- ── Notas de Pesquisa ── -->
+    <div class="cv-section">
+      <h2>Notas de Pesquisa</h2>
+      <ul>
+        <li>
+          <strong>Hipótese: CD38 como alvo central na cascata SASP→NAD+→senescência</strong>
+          — Proposta de que a inibição farmacológica de CD38 pode ser mais eficaz que a
+          suplementação direta de NAD+ para quebrar o ciclo de retroalimentação entre
+          senescência celular e depleção metabólica.
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── Competências Técnicas ── -->
     <div class="cv-section">
       <h2>Competências Técnicas</h2>
       <div class="skills-grid">
         <div class="skill-group">
-          <h4>Desenvolvimento</h4>
-          <p>TypeScript, Angular, Node.js, NestJS, PostgreSQL, MongoDB, Docker</p>
+          <h4>Back-end</h4>
+          <p>Node.js, NestJS, TypeORM, REST APIs, WebSockets (Socket.IO), MariaDB, PostgreSQL, MongoDB</p>
         </div>
         <div class="skill-group">
-          <h4>Ciências</h4>
-          <p>Biologia molecular, Bioquímica, Bioinformática, Análise de dados</p>
+          <h4>Front-end</h4>
+          <p>React, Next.js, Angular, TypeScript, HTML/CSS, Astro</p>
+        </div>
+        <div class="skill-group">
+          <h4>DevOps & Infra</h4>
+          <p>Docker, Cloudflare Workers/Pages, GitHub Actions, Git</p>
+        </div>
+        <div class="skill-group">
+          <h4>Ciências Biomédicas</h4>
+          <p>Biologia molecular, Bioquímica, Bioinformática, Análise de dados, Revisão de literatura científica</p>
         </div>
         <div class="skill-group">
           <h4>Idiomas</h4>
@@ -90,6 +155,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- ── Perfis ── -->
     <div class="cv-section">
       <h2>Perfis</h2>
       <div class="profiles">
@@ -148,6 +214,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .cv-item__date {
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
+  }
+
+  .cv-item__tech {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
+  }
+
+  .cv-subsection-title {
+    font-size: var(--font-size-base);
+    color: var(--color-accent);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+    font-weight: 600;
   }
 
   .skills-grid {
